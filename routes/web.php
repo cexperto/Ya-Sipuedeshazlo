@@ -21,7 +21,9 @@ Route::get('/', function () {
 });
 //Route::post('mision', 'UserController@store')->name('users.store');
 Route::view('/nosotros', 'nosotros');
+Route::view('/password/nosotros', 'nosotros');
 Route::view('/contacto', 'contacto');
+Route::view('/password/contacto', 'contacto');
 
 Auth::routes();
 
