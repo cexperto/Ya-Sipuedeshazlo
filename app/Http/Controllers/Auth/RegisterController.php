@@ -8,7 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 class RegisterController extends Controller
 {
     /*
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            
         ]);
     }
 
@@ -64,10 +66,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //if($data['rol']==3){
+            $roles= (int)$data['rol'];
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'state' => 'Activo',
+            
+            'codUserRol' => $roles,
             'password' => Hash::make($data['password']),
-        ]);
+        ]); 
+
+        } 
+    //}
+    public function register(Request $request){
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        // $this->guard()->login($user);
+        session()->flash('success', 'You have Successfully Registered'); 
+        return redirect('succes');        
+        /* return $this->registered($request, $user)?: 
+        redirect($this->redirectPath()); */
     }
 }
+//->flash('alert-success', 'User was successful added!')
+/*   */

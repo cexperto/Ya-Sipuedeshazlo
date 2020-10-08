@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','state','codUserRol',
     ];
 
     /**
@@ -35,5 +35,18 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+    public function roles(){
+    return $this
+        ->belongsTo(Role::class);
+    }
+    //roles
+    public $permisos = [
+        "admin" =>[
+            ["name"=>"homeAdmin","url"=>"/homeAdmin", "icon"=>"fas fa-user"]
+        ],
+        "student"=>[
+            ["name"=>"homeStudent","url"=>"/homeStudent", "icon"=>"fas fa-user"]
+        ]
     ];
 }

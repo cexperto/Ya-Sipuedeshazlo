@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\User;
+use App\Role;
 class LoginController extends Controller
 {
     /*
@@ -36,5 +37,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function authenticated($request , $user){
+        if($user->codUserRol==1){
+            return redirect()->route('adminHome');
+        }if($user->codUserRol==2){
+            return redirect()->route('studentHome');
+        }if($user->codUserRol==3){
+            return redirect()->route('employerHome');
+        }else{
+            return redirect()->back();
+            
+        }
+        
     }
 }

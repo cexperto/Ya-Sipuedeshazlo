@@ -29,6 +29,481 @@
   text-align: center;
   font-size: 20px;
 }
+/* contacto */
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0% 30px;
+    min-height: calc(100vh - 200px);
+    margin-top: 50px;
+}
+.contact__container{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ccedd2;
+    border-radius: 40px;
+    color: black;
+    padding: 20px 68px;
+    min-height: 500px;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.contact__container--form{
+    display: flex;
+    flex-direction: column;
+}
+.contact__container--label{
+    font-size: 14px;
+}
+.contact__container--remember-me{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.contact__container--remember-me a {
+    color: white;
+}
+.contact__container--remember-me a:hover {
+    text-decoration: underline;
+}
+.contact__container--social-media > div{
+display: flex;
+align-items: center;
+font-size: 14px;
+margin-bottom: 10px;
+}
+.contact__container--social-media > div >img{
+    width: 30px;
+    margin-right: 10px;
+    }
+.contact__container--contact{
+    align-self: center;
+    font-size: 14px;
+}
+.contact__container--contact a{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}
+.contact__container--contact a:hover{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.input__contact {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid #ccedd2;
+    font-family: 'Muli', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+}
+::placeholder{
+    color: black;
+}
+.button{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+    border-bottom: 2px solid #ccedd2;
+}
+/*
+main  
+*/
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.main__title {
+  font-size: 25px;
+}
+.main__subtitle {
+  font-size: 15px;
+}
+
+/* 
+carousel
+ */
+.categories__title {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  padding-left: 30px;
+  width: 100%;
+}
+.carousel{
+    width: 100%;
+    /* overflow: scroll; */
+    padding: 30px;
+    position: relative;
+}
+.carousel__container{  
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 10px;
+}
+.carousel-item{
+    background-color: black;
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+}
+.carousel-item:hover ~ .carousel-item{
+    transform: translate3d(100px, 0, 0);
+}    
+.carousel__container:hover .carousel-item{
+    opacity: 0.3;
+}
+.carousel__container:hover .carousel-item:hover{
+    transform: scale(1.5);
+    opacity: 1;
+}
+.carousel-item__img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;   
+}
+.carousel-item__details{
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    font-size: 10px;
+    opacity: 1;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;   
+}
+.carousel-item__details--title{
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    top: 40px;
+    }
+.carousel-item__details--subtitle{    
+    bottom: 0%;
+    color: white;
+    margin-left: 2px;
+    font-size: 10px;
+}
+
+.carousel-item__details--play {
+    margin-top: 150px;
+    height: 30px;
+}
+.carousel-item__details--suma{
+    margin-top: 150px;
+    height: 30px;
+}
+.carousel-item__img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+/* 
+seccion y footer
+*/
+.section{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+}
+.section__container{  
+    white-space: nowrap;
+    margin: 20px 50px;
+    padding-bottom: 10px;
+}
+.section__container--item{
+    font-family: 'Muli', sans-serif;
+    margin-top: 20px;
+    width: 100%;
+    flex-direction: row;
+    color: black;
+}
+.section__container--title{
+    font-size: 30px;
+    text-align: center;
+}
+.section__container--title:hover{
+    font-size: 31px;
+}
+.section__container--content{
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 15px;
+    font-size: 20px;
+    height: 200px;
+    border-right: 1px solid #ccedd2;
+    border-bottom: 1px solid #ccedd2;
+    border-radius: 15px;
+}
+.section__container--content:hover{
+    font-size: 21px;
+}
+/* 
+registro
+ */
+.register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0% 30px;
+    min-height: calc(100vh - 200px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.register__container{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ccedd2;
+    border-radius: 40px;
+    color: black;
+    padding: 40px 68px 40px;
+    min-height: 700px;
+    width: 430px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.register__container--form{
+    display: flex;
+    flex-direction: column;
+}
+.register__container--label{
+    font-size: 14px;
+}
+.register__container--remember-me{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.register__container--remember-me a {
+    color: white;
+}
+.register__container--remember-me a:hover {
+    text-decoration: underline;
+}
+.register__container--social-media > div{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.register__container--social-media > div >img{
+    width: 30px;
+    margin-right: 10px;
+    }
+.register__container--register{
+    align-self: center;
+    font-size: 14px;
+}
+.register__container--register a{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}
+.register__container--register a:hover{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.input__register {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid #ccedd2;
+    font-family: 'Muli', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    width: 95%;
+    height: 50px;
+}
+.input__register--label {
+    border-left: 0px;
+    border-right: 0px;
+    font-family: 'Muli', sans-serif;
+    padding: 0px 20px;
+    
+}
+::placeholder{
+    color: black;
+}
+.button{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    width: 60%;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+    border-bottom: 2px solid #ccedd2;
+}
+/*
+registrar 
+ */
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0% 30px;
+    min-height: calc(100vh - 200px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.login__container{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 4px solid #ccedd2;
+    border-radius: 40px;
+    color: black;
+    padding: 30px 68px 40px;
+    min-height: 550px;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.login__container--form{
+    display: flex;
+    flex-direction: column;
+}
+.login__container--label{
+    font-size: 14px;
+}
+.login__container--remember-me{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.login__container--remember-me a {
+    color: black;
+    text-decoration: none;
+}
+.login__container--remember-me a:hover {
+    text-decoration: underline;
+}
+.login__container--social-media > div{
+display: flex;
+align-items: center;
+font-size: 14px;
+margin-bottom: 10px;
+}
+.login__container--social-media > div >img{
+    width: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition:flex .5s;
+    }
+.login__container--social-media > div >img:hover{
+    width: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+    }
+.login__container--register{
+    font-size: 14px;
+
+}
+.login__container--register a{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}
+.login__container--register a:hover{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.input__login {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid #ccedd2;
+    font-family: 'Muli', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+}
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #e8f9e9;
+}
+.footer a{
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px){
+.login__container{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    width: 100%;
+}
+.footer{
+    align-items: flex-start;
+    flex-direction: column;
+}
+}
+
 </style>
 <body>
     <div id="app" class="header">
@@ -73,6 +548,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">
+                                        {{ __('Perfil') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

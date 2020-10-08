@@ -14,12 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in employer!') }}
                     {{ Auth::user()->name }}
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection 
+@endsection
