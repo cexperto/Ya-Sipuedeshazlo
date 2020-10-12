@@ -49,4 +49,7 @@ class User extends Authenticatable
             ["name"=>"homeStudent","url"=>"/homeStudent", "icon"=>"fas fa-user"]
         ]
     ];
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
 }

@@ -17,10 +17,12 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('lastName');
+            $table->string('image');
             $table->string('documentType');
             $table->string('numberDocumentType');
             $table->string('state');
             $table->string('phoneNumber');
+            $table->string('address');
             $table->string('valoration');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
