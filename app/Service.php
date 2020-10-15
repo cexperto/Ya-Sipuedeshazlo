@@ -8,7 +8,7 @@ class Service extends Model
 {
     //
     protected $fillable = [
-        'name','file', 'description', 'iframe', 'cost','status','latbox','longbox','codUserRol'
+        'name','file', 'description', 'iframe', 'cost','status','latbox','longbox','codUserServices'
     ];
 
     public function user(){

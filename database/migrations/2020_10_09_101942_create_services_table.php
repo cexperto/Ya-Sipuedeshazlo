@@ -27,10 +27,10 @@ class CreateServicesTable extends Migration
             $table->string('address');
             $table->string('longbox');
             $table->string('latbox');
-            $table->bigInteger('codUserRol')->unsigned();
+            $table->bigInteger('codUserServices')->unsigned();
            
             $table->timestamps();
-            $table->foreign('codUserRol')->references('id')->on('users');
+            $table->foreign('codUserServices')->references('id')->on('users');
 
         });
     }

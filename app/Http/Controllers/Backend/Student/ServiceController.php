@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend\Student;
 use App\Service;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceStudentRequest;
-
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -15,10 +15,21 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::latest()->get();
-        return view('student/services.index',compact('$services'));
-    }
+        $idU = auth()->user()->id;
+        $services = Service::where('codUserServices','=',$idU)
+                            ->where('status','=','Disponible')
+                            ->orderBy('id','DESC')
+                            ->get();
+                            
+        if($services->isEmpty()){
+            //return 'vasio';
+            return view('student.create');
+        }else{
+            //return 'no vasio';
+        return view('student.index',compact('services'));
 
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +37,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('studentCreate');
+        return view('student.create');
     }
 
     /**
@@ -46,7 +57,7 @@ class ServiceController extends Controller
             'latbox'          => $request['latbox'],
             'longbox'         => $request['longbox'],
             'status'          => 'Disponible',
-            'codUserRol'      => auth()->user()->id,
+            'codUserServices' => auth()->user()->id,
         ]);
         //]+$request->all());
         //imagen
@@ -75,9 +86,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        //
+        //return $service;
+        return view('student.edit', compact('service'));
     }
 
     /**
@@ -87,9 +99,16 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiceStudentRequest $request, Service $service)
     {
-        //
+        //dd($request->all());
+        $service->update($request->all());
+        if($request->file('file')){
+            //Storage::disk('public')->delete($post->image);
+            $service->image = $request->file('file')->store('services', 'public');
+            $service->save();
+        }
+        return back()->with('status', 'Actualizado con exito');
     }
 
     /**
@@ -98,8 +117,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        Storage::disk('public')->delete($service->image);
+        $service->delete();
+        return back()->with('status', 'Eliminado con exito');
     }
 }

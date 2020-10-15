@@ -52,6 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             
@@ -69,9 +70,10 @@ class RegisterController extends Controller
         //if($data['rol']==3){
             $roles= (int)$data['rol'];
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'state' => 'Activo',
+            'name'          => $data['name'],
+            'lastname'      => $data['lastname'],
+            'email'         => $data['email'],
+            'state'         => 'Activo',
             
             'codUserRol' => $roles,
             'password' => Hash::make($data['password']),
@@ -83,7 +85,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         // $this->guard()->login($user);
-        session()->flash('success', 'You have Successfully Registered'); 
+        session()->flash('success', 'Registro exitoso!'); 
         return redirect('succes');        
         /* return $this->registered($request, $user)?: 
         redirect($this->redirectPath()); */

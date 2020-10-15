@@ -582,28 +582,39 @@ text-decoration: none;
                                 <a class="nav-link header__menu--item" href="contacto">Contacto</a>
                             </li>                            
                             <li class="nav-item">
-                                <a class="nav-link header__menu--item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link header__menu--item" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
                             </li>
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link header__menu--item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link header__menu--item" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('studentCreate') }}" >
-                            {{ __('Inicio') }}
-                            </a>
-                        </li>
-
+                            @if(Auth::user()->codUserRol == 2)
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('history') }}" >
+                                {{ __('Historial') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.index') }}">
+                                {{ __('Servicios actuales') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.create') }}">
+                                {{ __('Publicar servicios') }}
+                                </a>
+                            </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('Perfil') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

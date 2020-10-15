@@ -24,13 +24,13 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <button class="button">Iniciar sesión</button>
+            <center><button class="button">Iniciar sesión</button></center>
             <div class="login__container--remember-me">
             <!-- <label>
               <input type="checkbox" name="" id="cbox1" value="checkbos">Recuérdame
             </label> -->
             @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
+                <a class="btn-link" href="{{ route('password.request') }}">
                     {{ __('Olvidé mi contraseña?') }}
                 </a>
             @endif

@@ -27,11 +27,11 @@ Route::view('/nosotros', 'nosotros');
 Route::view('/password/nosotros', 'nosotros');
 Route::view('/contacto', 'contacto');
 Route::view('/password/contacto', 'contacto');
-Route::view('/adminHome', 'adminHome');
-Route::view('/studentCreate', 'student/adminHome');
+//Route::view('/adminHome', 'adminHome');
+//Route::view('/studentCreate', 'student/adminHome');
 Route::view('/succes', 'succes');
-Route::view('/test', 'geo');
-Route::view('/columnas', 'bootstrap');
+//Route::view('/mis', 'mis');
+//Route::view('/columnas', 'student/bootstrap');
 //Route::view('/profile', 'profile/profile');
 
 Auth::routes();
@@ -39,18 +39,13 @@ Route::get('/adminHome', function (){
     return view('admin.adminHome');
 })->name('adminHome');
 
-//ruta para crear servicios
-Route::get('/studentHome', function (){
-    return view('Student.create');
-            })->name('studentCreate');
-Route::resource('services', 'Backend\student\ServiceController');
-
-
 //rupa perfil
 Route::resource('profile','ProfileController');
-Route::get('/profile', function (){
+Route::post('/userUpdate','ProfileController@userUpdate');
+//Route::put('profile','ProfileController@update')->name('update');
+/* Route::get('/profile', function (){
     return view('profile.profile');
-})->name('profile');
+})->name('profile'); */
 
 Route::get('/employerHome', function (){
     return view('employer.employerHome');
@@ -59,6 +54,7 @@ Route::get('/employerHome', function (){
 
 //AIzaSyDPk_OYKeT5aN1cuglTcy3B1bdywKfe8JA
 //publicar servicios
-Route::post('publicServices','Backend/ServiceController@store')
-            ->name('service.store');
-Route::get('readServices','Backend/ServiceControler@index');
+
+Route::resource('services', 'Backend\student\ServiceController');
+//historial estudiante
+Route::get('/history','Backend\student\HistoryController@index')->name('history');

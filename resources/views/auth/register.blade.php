@@ -5,11 +5,12 @@
     <section class="register">
         <section class="register__container">
             <h2>Regístrate</h2>
-            <label for="rol" class="input__register--label">empleador</label>
+            
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <input id="name" class="input__register @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre completo" required autocomplete="name" autofocus>
+                <input id="name" class="input__register @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre" required autocomplete="name" autofocus>
+                <input id="lastname" class="input__register @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" placeholder="Apellido" required autocomplete="lastname" autofocus>
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -22,6 +23,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                <label for="rol" class="input__register--label">Eres un estudiante o empleador?</label>
                 <select id="rol" name="rol" class="input__register" required>
                     <option value=""></option>
                     <option value="2">Estudiante</option>

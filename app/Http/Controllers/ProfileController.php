@@ -1,8 +1,12 @@
 <?php
-
-namespace App\Http\Controllers;
-
+use Illuminate\Support\MessageBag;
+namespace App\Http\Controllers;//
+use App\User;//
+use App\Http\Controllers\Controller;//
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -13,8 +17,13 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->get();
-        return view('users.index',compact('userss'));
+        $idU = auth()->user()->id;
+        $users = User::where('id','=',$idU)->get();
+        if($users->isEmpty()){
+            //return
+        }else{
+            return view('profile.index',compact('users'));
+        }        
     }
 
     /**
@@ -55,9 +64,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        //dd($user->all());
+        //$idU = auth()->user()->id;
+        //$users = User::where('id','=',$idU)->get();
+        return view('profile.edit', compact('user'));
+         //$user;
     }
 
     /**
@@ -67,9 +80,21 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function userUpdate(ProfileRequest $request)
     {
-        //
+        
+        $userUpdate =[
+            'address'     => $request->input('address'),
+            'phoneNumber' => $request->input('phoneNumber'),
+        ];
+        if($request->file('file')){
+            Storage::disk('public')->delete($request->image);
+            $request->image = $request->file('file')->store('users', 'public');
+        }
+        //return dd($userUpdate);
+        $idU = auth()->user()->id;
+        DB::table('users')->where('id','=',$idU)->update($userUpdate);
+        return back()->with('status', 'Actualizado con exito');
     }
 
     /**
