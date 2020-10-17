@@ -24,11 +24,12 @@
                     
 					<div class="col-sm-6"><!-- segunda columna -->
 					<form 
-                        action="{{ route('services.store') }}" 
+                        action="/findServices" 
                         method="POST" 
                         enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="nameJob">Selecciona un oficio *</label>
+                                <label for="nameJob">Encuentra el servicio que buscas *</label>
+                                <label for="nameJob">Selecciona uno *</label>
                                 <select name="name" id="name" class="custom-select">
 									<option value=""></option>
 									<option value="computadores">Tecnico de computadores</option>
@@ -47,30 +48,22 @@
 									<option value="meseeo">Meser@</option>
 									<option value="repartidor">Repartidor@</option>
 								</select>
-                            </div>
+                            </div>							
                             <div class="form-group">
-                                <label>Añade una imagen descriptiva de tu oficio (opcional)</label>
-                                <input type="file" name="file">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Escribe una descripcion corta de tus servicios *</label>
-                                <textarea name="description" id="description" rows="2" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="content">Añade un video, pon el enlace para compartir(Opcional)</label>
-                                <textarea name="iframe" id="content" class="form-control"></textarea>
-                            </div>
-							<div class="form-group">
-                                <label for="cost">Dinos cual es el costo aproximado de tu servicio</label>
-                                <input type="text" name="cost" id="cost" class="form-control">
+                            <label>selecciona la distancia *</label>
+                                <select name="distance" id="distance" class="custom-select">
+                                    <option value=""></option>
+                                    <option value=".5">500 metros</option>
+                                    <option value="1">1 kilometro</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <input id="latbox" name="latbox">
                                 <input id="longbox" name="longbox">
                             </div>
                             <div class=""form-control>
-                                @csrf
-                            <input id="aceptar" type="submit" value="Aceptar" class="btn btn-sm btn-primary">
+                                @csrf                                
+                            <input id="aceptar" type="submit" value="Aceptar" class="btn-sm btn-primary float-right">
                             </div>
 			            </form>
                     

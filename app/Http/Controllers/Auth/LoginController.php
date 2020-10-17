@@ -44,7 +44,7 @@ class LoginController extends Controller
         }if($user->codUserRol==2){
             return redirect()->route('services.create');
         }if($user->codUserRol==3){
-            return redirect()->route('employerHome');
+            return redirect()->route('employer.create');
         }else{
             return redirect()->back();
             

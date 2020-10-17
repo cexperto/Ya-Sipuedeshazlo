@@ -35,9 +35,6 @@ Route::view('/succes', 'succes');
 //Route::view('/profile', 'profile/profile');
 
 Auth::routes();
-Route::get('/adminHome', function (){
-    return view('admin.adminHome');
-})->name('adminHome');
 
 //rupa perfil
 Route::resource('profile','ProfileController');
@@ -58,3 +55,29 @@ Route::get('/employerHome', function (){
 Route::resource('services', 'Backend\student\ServiceController');
 //historial estudiante
 Route::get('/history','Backend\student\HistoryController@index')->name('history');
+
+//servicios employer
+Route::post('/findServices', 'Backend\employer\ServiceController@findServices');
+// Route::get('/servicesEmployer', 'Backend\employer\ServiceController@create')->name('servicesEmployer');
+// Route::get('/editServicesEmployer', 'Backend\employer\ServiceController@edit')->name('editServicesEmployer');
+
+//Route::get('employerServices/{service:slug}', 'Backend\employer\ServiceController@service')->name('service');
+Route::resource('employer','Backend\employer\EmployerServiceController');
+
+//Route::post('/selectService','Backend\employer\updateService@selectService');
+/* Route::resource('Eservices', 'Backend\ServiceController')
+->middleware('auth'); */
+
+//rutas admin
+Route::get('/adminHome', function (){
+    return view('admin.adminHome');
+})->name('adminHome');
+//ruta usuarios
+Route::resource('users','Backend\Admin\UserController');
+//ruta services
+Route::resource('posts', 'Backend\PostController');
+Route::get('detailService','Backend\DetailServiceController@detailService')->name('detailService');
+Route::get('detailEmployer','Backend\DetailEmployerController@index')->name('detailEmployer');
+//rutas roles
+Route::resource('roles','Backend\AdminRolesController');
+Route::get('editRoles','Backend\editRolesController@edit')->name('editRoles');

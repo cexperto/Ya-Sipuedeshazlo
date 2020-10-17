@@ -591,6 +591,28 @@ text-decoration: none;
                                 </li>
                             @endif
                         @else
+                        @if(Auth::user()->codUserRol == 1)
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('adminHome') }}">
+                                {{ __('Inicio') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('users.index') }}" >
+                                {{ __('Administrar usuarios') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('posts.index') }}">
+                                {{ __('Administrar servicios') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('roles.index') }}">
+                                {{ __('Administrar roles') }}
+                                </a>
+                            </li>                            
+                            @endif
                             @if(Auth::user()->codUserRol == 2)
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('history') }}" >
@@ -607,6 +629,14 @@ text-decoration: none;
                                 {{ __('Publicar servicios') }}
                                 </a>
                             </li>
+                            @endif
+                            @if(Auth::user()->codUserRol == 3)
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('posts.index') }}" >
+                                {{ __('Servicios') }}
+                                </a>
+                            </li>
+                            
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
