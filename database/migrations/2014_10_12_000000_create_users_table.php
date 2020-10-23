@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('image');
             $table->string('documentType');
-            $table->string('numberDocumentType');
+            $table->string('documentNumber');
             $table->string('state');
             $table->string('phoneNumber');
-            $table->string('address');
-            $table->string('valoration');
+            $table->string('address');            
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -31,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             
             $table->bigInteger('codUserRol')->unsigned();
-            $table->foreign('codUserRol')->references('id')->on('roles');
+            $table->foreign('codUserRol')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

@@ -17,6 +17,11 @@
                     {{ __('You are logged in!') }}
                     {{ Auth::user()->name }}
                 </div>
+                <script>
+                $(document).ready(function(){
+                    alert("Hola mundo");
+                    });
+                </script>
             </div>
         </div>
     </div>

@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Backend\Admin;
-
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/users.create');        
     }
 
     /**
@@ -37,7 +40,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $roles= (int)$request['rol'];
+        //return $roles;   
+        $user = User::create([
+            'name'                  => $request['name'],
+            'lastName'              => $request['lastName'],
+            'documentType'          => $request['documentType'],
+            'documentNumber'        => $request['documentNumber'],
+            'state'                 => 'Activo',
+            'phoneNumber'           => $request['phoneNumber'],
+            'address'               => $request['address'],
+            'email'                 => $request['email'],            
+            'password'              => Hash::make($request['password']),            
+            'codUserRol'            => $roles,       
+        ]);
+        return back()->with('status', 'Creado con exito');
     }
 
     /**

@@ -46,16 +46,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-6 control-label">Numero de identificacion</label>
-                                        {{ $detail->numberDocument }}
+                                        {{ $detail->documentNumber }}
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-5 control-label">estado</label>
                                         {{ $detail->state }} 
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">valoracion</label><hr>
-                                        {{ $detail->valoration }} 
-                                    </div>
+                                    
                                 </div><!-- fin 2 da -->
                                 
                                 <div class="col-sm-6"><!-- tercera columna -->                            
@@ -77,11 +74,11 @@
                                                 {{ $detail->idServices }}                            
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label">Nombre del servicio</label>
+                                        <label class="col-md-5 control-label">Nombre del servicio</label><br>
                                         {{ $detail->names }} 
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label">Descripcion</label>
+                                        <label class="col-md-5 control-label">Descripcion</label><br>
                                         {{ $detail->description }} 
                                     </div>
                                     <div class="form-group">
@@ -104,7 +101,7 @@
                                     @endif
                                     <div class="form-group">
                                         <label class="col-md-5 control-label">Estado</label>
-                                        {{ $detail->status }} 
+                                        {{ $detail->state }} 
                                     </div>
                                     
                                     @if($detail->employerId)

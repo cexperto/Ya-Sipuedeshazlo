@@ -53,7 +53,16 @@
                             @csrf
                             </form>
                               <span></span>
+                              @if(Auth::user()->codUserRol==1)
+                              <a class="btn-sm btn-active float-left" href="{{ route('adminHome') }}">Aceptar</a>
+                              @endif
+                              @if(Auth::user()->codUserRol==2)
                               <a class="btn-sm btn-active float-left" href="{{ route('services.create') }}">Aceptar</a>
+                              @endif
+                              @if(Auth::user()->codUserRol==3)
+                              <a class="btn-sm btn-active float-left" href="{{ route('employer.create') }}">Aceptar</a>
+                              @endif
+                              
                             </div>
                           
                       </div><!-- fin 2da columna -->                      

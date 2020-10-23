@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <style>
 .header__img {
@@ -539,7 +540,15 @@ text-decoration: none;
 .footer a:hover{
     text-decoration: underline;
 }
-
+.notificationDanger{
+    border-radius: 5px;
+    background-color: red;
+    opacity: 0.7;
+}
+.notificationDanger--item{    
+    color: black;
+    font-weight: bold;
+}
 @media only screen and (max-width: 600px){
 .login__container{
     background-color: transparent;
@@ -615,13 +624,23 @@ text-decoration: none;
                             @endif
                             @if(Auth::user()->codUserRol == 2)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('history') }}" >
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyStudent') }}" >
                                 {{ __('Historial') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsStudent') }}" >
+                                {{ __('Valoraciones y comentarios') }}
+                                </a>
+                            </li>                            
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.index') }}">
                                 {{ __('Servicios actuales') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('completeStudent') }}">
+                                {{ __('Servicios terminados') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -629,11 +648,36 @@ text-decoration: none;
                                 {{ __('Publicar servicios') }}
                                 </a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('runningServicesStudent') }}" >
+                                {{ __('Servicios en ejecucion') }}
+                                </a>
+                            </li>
                             @endif
                             @if(Auth::user()->codUserRol == 3)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('posts.index') }}" >
-                                {{ __('Servicios') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyEmployer') }}" >
+                                {{ __('Historial') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsEmployer') }}" >
+                                {{ __('Valoraciones y comentarios') }}
+                                </a>
+                            </li>                            
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('employer.create') }}" >
+                                {{ __('Buscar servicios') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('acquired') }}" >
+                                {{ __('Servicios Adquiridos') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('complete') }}">
+                                {{ __('Servicios terminados') }}
                                 </a>
                             </li>
                             

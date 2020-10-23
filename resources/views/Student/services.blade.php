@@ -31,6 +31,17 @@
             @endforeach()
             {{ $services->links() }}
         </div>
+        <script>
+            $(document).ready(function(){
+                //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
+                setTimeout(refrescar, 2000);
+            });
+            function refrescar(){
+                //Actualiza la página
+                //alert("Hola mundo");
+                location.reload();
+            }
+        </script>
     </div>
 </div>
 @endsection

@@ -10,7 +10,7 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <input id="name" class="input__register @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre" required autocomplete="name" autofocus>
-                <input id="lastname" class="input__register @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" placeholder="Apellido" required autocomplete="lastname" autofocus>
+                <input id="lastName" class="input__register @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" placeholder="Apellido" required autocomplete="lastName" autofocus>
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -15,30 +15,45 @@
                     @endif
 
                     <form action="{{ route('services.update', $service) }}" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                            @if(!empty($errors->all()))                            
+                                    <div class="notificationDanger">                                        
+                                        <div class="notificationDanger--item">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>
+                                                    {{ $error }}
+                                                </li>
+                                            @endforeach                            
+                                        </ul>
+                                        </div>                                           
+                                    </div>
+                            @endif                                    
+                            </div>
                         <div class="form-group">                            
                             <label for="name">Selecciona un oficio *</label>
-                                <select name="name" id="name" class="custom-select" required>
-									<option value="{{ old('name', $service->name) }}">{{ old('name', $service->name) }}</option>
-									<option value="computadores">Tecnico de computadores</option>
-									<option value="lavadoras">Tecnico de lavadoras</option>
-									<option value="electricidad">Electricista</option>
-									<option value="cocina">Cociner@</option>
-									<option value="aseo">Aseador@</option>
-									<option value="jardin">Jardiner@</option>
-									<option value="mecania_b">Mecanico de bicis</option>
-									<option value="mecania_m">Mecanico de motos</option>
-									<option value="mecania_a">Mecanico de autos</option>
-									<option value="aux_o">Auxiliar de ornamentacion</option>
-									<option value="aux_c">Auxiliar de cocina</option>
+                                <select name="names" id="names" class="custom-select" required>
+									<option value="{{ old('name', $service->names) }}">{{ old('names', $service->names) }}</option>
+									<option value="Tecnic@ de computadores">Tecnico de computadores</option>
+									<option value="Tecnic@ de lavadoras">Tecnico de lavadoras</option>
+									<option value="Electricidad">Electricista</option>
+									<option value="Cociner@">Cociner@</option>
+									<option value="Aseador@">Aseador@</option>
+									<option value="Jardiner@">Jardiner@</option>
+									<option value="Mecanic@ de bicis">Mecanico de bicis</option>
+									<option value="Mecanic@ de motos">Mecanico de motos</option>
+									<option value="Mecanic@ de autos">Mecanico de autos</option>
+									<option value="Auxiliar de ornamentacion">Auxiliar de ornamentacion</option>
+									<option value="Auxiliar de cocina">Auxiliar de cocina</option>
 									<option value="ornamentacion">Ornamentador</option>
-									<option value="volantes">Volantero</option>
-									<option value="meseeo">Meser@</option>
-									<option value="repartidor">Repartidor@</option>
+									<option value="Volanter@">Volantero</option>
+									<option value="Meser@">Meser@</option>
+									<option value="Mensajer@">Mensajer@</option>
 								</select>
                             </div>
                             <div class="form-group">
                                 <label>Añade una imagen descriptiva de tu oficio (opcional)</label>
-                                <input type="file" name="file">
+                                <input accept="image/jpeg,image/png" type="file" name="file">
                             </div>
                             <div class="form-group">
                                 <label for="description">Escribe una breve descripcion de tus servicios *</label>
@@ -56,7 +71,7 @@
                             <div class="form-group">
                             <label for="cost">Puedes cancelar</label>
                                 <select name="status" id="status" class="custom-select" required>
-                                <option value="{{ old('status', $service->status) }}">{{ old('status', $service->status) }}</option>
+                                <option value="{{ old('state', $service->state) }}">{{ old('state', $service->state) }}</option>
                                 <option value="cancelado">Cancelar</option>
                                 </select>
                             </div>

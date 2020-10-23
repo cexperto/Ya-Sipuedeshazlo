@@ -22,8 +22,8 @@
                         
                                 <div class="col-sm-6"><!-- segunda columna -->
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label"></label>
-                                        {{ $service->name }}
+                                        <label class="col-md-5 control-label">{{ $service->names }}</label>
+                                        
                                     </div>
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Descripcion</label>
@@ -35,7 +35,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="col-md-5 control-label">Estado:</label>
+                                            <label class="col-md-5 control-label">Disponible</label>
                                             {{ $service->status }}
                                             <a href="{{ route('services.edit', $service) }}" class="btn-secondary btn-sm active float-right" role="button">
                                             Editar

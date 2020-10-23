@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +20,10 @@ class ServiceController extends Controller
     {
         $idU = auth()->user()->id;
         $services = Service::where('codUserServices','=',$idU)
-                            ->where('status','=','Disponible')
+                            ->where('state','=','Disponible')
                             ->orderBy('id','DESC')
                             ->get();
-                            
+        //return $services;
         if($services->isEmpty()){
             //return 'vasio';
             return view('student.create');
@@ -50,13 +53,14 @@ class ServiceController extends Controller
     {
         //se registran los servicios
         //dd($request->all());
+        //return $request;
         $service = Service::create([
-            'name'            => $request['name'],
+            'names'            => $request['names'],
             'description'     => $request['description'],
             'cost'           => $request['cost'],
             'latbox'          => $request['latbox'],
             'longbox'         => $request['longbox'],
-            'status'          => 'Disponible',
+            'state'          => 'Disponible',
             'codUserServices' => auth()->user()->id,
         ]);
         //]+$request->all());
@@ -101,10 +105,10 @@ class ServiceController extends Controller
      */
     public function update(ServiceStudentRequest $request, Service $service)
     {
-        //dd($request->all());
+        //return $request;
         $service->update($request->all());
         if($request->file('file')){
-            //Storage::disk('public')->delete($post->image);
+            Storage::disk('public')->delete($service->image);
             $service->image = $request->file('file')->store('services', 'public');
             $service->save();
         }

@@ -13,7 +13,7 @@ class ServiceEmployerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class ServiceEmployerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'          => ['required','string'],
+            'distance'      => ['required','numeric'],
+            'latbox'        => 'required',
+            'longbox'       => 'required',            
+        ];
+    }
+    public function messages(){
+        return[
+            'name.required' => 'Es importante que selecciones un oficio',            
+            'distance.required' => 'Es importante que selecciones una distancia',            
+            'distance.numeric' => 'Valor invalido',            
         ];
     }
 }

@@ -8,6 +8,9 @@ use DB;
 
 class updateService extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function selectService(Request $request, Service $service){
         $serviceUpdate =[
             'employerId'    => $request->input('employerId'),

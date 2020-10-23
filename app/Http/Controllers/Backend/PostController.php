@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 Use DB;
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -98,9 +101,11 @@ class PostController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Request $request)
     {
-        $role->delete();
+        $id = $request->input('id');
+        $services = Service::where('id','=',$id);
+        $services->delete();
         return back()->with('status', 'Eliminado con exito');
 
     }

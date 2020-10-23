@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name','lastName','file',
-        'documentType','numberDocument',
+        'documentType','numberDocument','documentType',
         'state','phoneNumber','address','email','valoration',
         'password','state','codUserRol',
     ];
@@ -43,6 +43,15 @@ class User extends Authenticatable
     return $this
         ->belongsTo(Role::class);
     }
+    public function valorations(){
+    return $this
+        ->hasMany(Valoration::class);
+    }
+    
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
+    
     //roles
     public $permisos = [
         "admin" =>[
@@ -52,7 +61,5 @@ class User extends Authenticatable
             ["name"=>"homeStudent","url"=>"/homeStudent", "icon"=>"fas fa-user"]
         ]
     ];
-    public function services(){
-        return $this->hasMany(Service::class);
-    }
+
 }

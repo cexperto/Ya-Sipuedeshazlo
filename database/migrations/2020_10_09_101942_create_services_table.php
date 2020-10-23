@@ -15,22 +15,25 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('names');
             $table->string('image')->nullable();
             $table->string('description');
-            $table->text('iframe')->nullable();
-            $table->string('type');
+            $table->text('iframe')->nullable();            
             $table->string('duration');
             $table->double('cost');
-            $table->string('valoration');
-            $table->string('status');
-            $table->string('address');
+            
+            $table->string('state');            
             $table->string('longbox');
             $table->string('latbox');
-            $table->bigInteger('codUserServices')->unsigned();
+
+            $table->string('slug')->unique();
+
+            $table->integer('employerId')->nullable();
+
+            $table->bigInteger('codUserServices')->unsigned();            
            
             $table->timestamps();
-            $table->foreign('codUserServices')->references('id')->on('users');
+            $table->foreign('codUserServices')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

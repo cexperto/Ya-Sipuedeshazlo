@@ -4,41 +4,63 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Editar Artículo</div>
+        <div class="card-header"><center>{{ __('Haz seleccionado un servicio') }}</div>
+        <div class="card-body">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form action="{{ route('employer.update', $service) }}" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="title">Título *</label>
-                            <input type="text" name="title" id="title" class="form-control" required value="{{ old('title', $service->name) }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Image</label>
-                            <input type="file" name="file">
-                        </div>
-                        <div class="form-group">
-                            <label for="Contenido">Contenido *</label>
-                            <textarea name="body" id="Contenido" rows="6" class="form-control" required>{{ old('body', $service->name) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="iframe">Contenido embebido</label>
-                            <textarea name="iframe" id="iframe" class="form-control">{{ old('iframe', $service->description) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            @csrf
-                            @method('PUT')
-                            <input type="submit" value="Actualizar" class="btn btn-sm btn-primary">
-                        </div>
-                    </form>
+        @if(Auth::User()->id)
+            @foreach($services as $service)
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                            <div class="form-group row">
+                            <div class="col-sm-6"><!-- primera columna -->
+                                    @if($service->image)
+                                        <img src="{{ $service->image }}" class="card-img-top" width="100%" height="300">
+                                        @else
+                                            <img src="https://i.imgur.com/FmGtiUJ.jpg" class="card-img-top" width="100%" height="300">
+                                    @endif
+                                </div><!-- fin promera columna -->
+                        
+                                <div class="col-sm-6"><!-- segunda columna -->
+                                    <div class="form-group">
+                                        <label class="col-md-5 control-label">Nombre</label>
+                                        {{ $service->names }}
+                                    </div>
+                                        <div class="form-group">
+                                            <label class="col-md-5 control-label">Descripcion</label><hr>
+                                            {{ $service->description }} 
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-5 control-label">Costo aproximado</label>
+                                            {{ $service->cost }} 
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <form action="{{ route('buyService', $service)}}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <input type="hidden" id="id" name="id" value="{{ $service->id }}">
+                                            
+                                            <input 
+                                            type="submit" 
+                                            value="Adquirir" 
+                                            class="btn-sm btn-primary float-right"
+                                            onclick="return confirm('¿Desea adquirir este servicio? ')"
+                                            >                                            
+                                        </form>
+                                        <form action="{{ route('employer.create') }}">
+                                        <input type="submit" class="btn-sm btn-primary" value="No es lo que busco">
+                                        </form>
+                                        
+                                        </div>                                                                
+                                        
+                                </div><!-- fin 2 da -->
+                            </div>
+                    </div>
                 </div>
-            </div>
+                <hr>
+            @endforeach
+        @endif
+        </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class editRolesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function edit(Request $request){
         $rolId = $request->input('id');
         $roles = Role::where('id','=',$rolId)->get();

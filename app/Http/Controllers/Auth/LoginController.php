@@ -39,11 +39,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     public function authenticated($request , $user){
-        if($user->codUserRol==1){
+        /* $image=$user->image;
+        $documentType=$user->documentType;
+        $documentNumber=$user->documentNumber;
+         */
+        if($user->codUserRol==1){            
             return redirect()->route('adminHome');
-        }if($user->codUserRol==2){
+        }if($user->codUserRol==2 && $user->state=='Activo'){
             return redirect()->route('services.create');
-        }if($user->codUserRol==3){
+        }if($user->codUserRol==3 && $user->state=='Activo'){
+            //if(empty($image) || empty($image) ){return 'imagen vasia';}
             return redirect()->route('employer.create');
         }else{
             return redirect()->back();

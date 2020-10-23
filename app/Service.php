@@ -10,8 +10,8 @@ class Service extends Model
     use Sluggable;    
 
     protected $fillable = [
-        'name','file', 'description', 'iframe', 'cost',
-        'status','latbox','longbox','employerId','codUserServices'
+        'names','file', 'description', 'iframe', 'cost',
+        'state','latbox','longbox','employerId','codUserServices'
     ];
     public function sluggable()
     {
@@ -29,5 +29,10 @@ class Service extends Model
     public function getGetImageAttribute(){
         if($this->image)
             return url("storage/$this->image");
+    }
+    
+    public function valorationServices()
+    {
+        return $this->hasOne(ValorationServices::class);
     }
 }

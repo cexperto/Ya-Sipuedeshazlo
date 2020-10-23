@@ -5,17 +5,24 @@ namespace App\Http\Controllers\Backend\employer;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
+use App\Http\Requests\ServiceEmployerRequest;
 use Illuminate\Http\Request;
 use DB;
 //4.580999194058937,  -74.20530903287658
 class ServiceController extends Controller
 {
-    public function findServices(Request $request){
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    public function findServices(ServiceEmployerRequest $request){
         /*  */
+        $number= $request->input('distance');
         $name = $request->input('name');
         $lat = $request->input('latbox');
         $lng = $request->input('longbox');
-        $distance = $request->input('distance');
+        $distance = doubleval($number);
+        //return $distance;       
+        
         function getBoundaries($lat, $lng, $distance, $earthRadius = 6371)
         {
             $return = array();
@@ -49,7 +56,7 @@ class ServiceController extends Controller
                 (6371 * acos(cos(radians($lat)) * cos(radians(latbox)) * cos(radians(longbox)
                 - radians($lng)) + sin(radians($lat)) * sin(radians(latbox))))
                 AS distance
-                FROM services WHERE status='Disponible' and name='$name' ORDER BY distance DESC";
+                FROM services WHERE state='Disponible' and names='$name' ORDER BY distance DESC";
         
         //$services = User::latest()->get();
         $services = DB::select($sql);

@@ -47,6 +47,7 @@
                                     </td>
                                     <td>
                                         <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                                        <input type="hiden" id="id" name="id" value="{{ $post->id }}">
                                             @csrf
                                             @method('DELETE')
                                             <input 

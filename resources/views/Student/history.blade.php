@@ -28,17 +28,49 @@
                                         {{ $service->name }} 
                                     </div>
                                         <div class="form-group">
-                                            <label class="col-md-5 control-label">Descripcion</label>
-                                            {{ $service->description }} 
+                                                                                       
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Descripcion</label><br>
+                                            {{ $service->description }}                                            
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Costo</label>
                                             {{ $service->cost }} 
                                         </div>
+                                        @if($service->stateServices=='Terminado')
+                                            <div class="form-group">
+                                            <label class="col-md-3 control-label">Estado:</label>
+                                            Terminado con exito
+                                            </div>
+                                        @endif
+                                        @if($service->stateServices=='Empleador')
+                                            <div class="form-group">
+                                            <label class="col-md-3 control-label">Estado:</label>
+                                            Cancelado por empleador
+                                            </div>
+                                        @endif
+                                        @if($service->stateServices=='Estudiante')
+                                            <div class="form-group">
+                                            <label class="col-md-3 control-label">Estado:</label>
+                                                Cancelado por estudiante
+                                            </div>
+                                        @endif
                                         
                                         
                                 </div><!-- fin 2 da -->
                             </div>
+                            <script>
+                                $(document).ready(function(){
+                                    //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
+                                    setTimeout(refrescar, 2000);
+                                });
+                                function refrescar(){
+                                    //Actualiza la página
+                                    //alert("Hola mundo");
+                                    location.reload();
+                                }
+                            </script>
                     </div>
                 </div>
                 <hr>

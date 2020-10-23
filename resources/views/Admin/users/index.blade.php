@@ -37,6 +37,10 @@
                                             Editar
                                         </a>
                                     </td>
+                                    @if($user->codUserRol==1)
+                                    <td>usuario administrador</td>
+                                    @endif
+                                    @if($user->codUserRol>1)
                                     <td>
                                         <form action="{{ route('users.destroy', $user) }}" method="POST">
                                             @csrf
@@ -48,6 +52,7 @@
                                             onclick="return confirm('¿Desea eliminar?')">
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
