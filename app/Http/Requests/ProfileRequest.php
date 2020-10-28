@@ -24,9 +24,19 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file'          => '',
-            'phoneNumber'   => 'required',
-            'address'       => 'required',
+            'name'          => '',
+            'phoneNumber'   => ['required', 'integer'],
+            'address'          => ['required', 'string'],
+            'file'          => 'image|max:2048',
+        ];
+    }
+    public function messages(){
+        return[                        
+            'phoneNumber.required' => 'Es importante que introduscas un numero',
+            'phoneNumber.integer' => 'Es importante que introduscas un numero detelefono valido',
+            'address.required' => 'Es importante que escribas una direccion valida',            
+            'address.string' => 'Es importante que escribas una direccion valida',            
+            'file.image' => 'Es importante que subas una imagen',            
         ];
     }
 }

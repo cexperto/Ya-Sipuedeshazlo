@@ -52,14 +52,38 @@
 								</select>
                             </div>
                             <div class="form-group">
-                                <label>Añade una imagen descriptiva de tu oficio (opcional)</label>
+                                <label>Añade una imagen descriptiva de tu oficio (opcional)</label><br>
                                 <input accept="image/jpeg,image/png" type="file" name="file">
                             </div>
                             <div class="form-group">
-                                <label for="description">Escribe una breve descripcion de tus servicios *</label>
-                                
+                                <label for="description">Escribe una breve descripcion de tus servicios *</label>                                
                                 <textarea name="description" id="description" rows="2" class="form-control">{{ old('description', $service->description) }}</textarea>
                             </div>
+                            @foreach($types as $type)
+                                @if($type->name=='servicios')
+                                    <div class="form-group">
+                                        <label for="description">cobro por servicios </label>                                
+                                    </div>
+                                @endif
+                                @if($type->name=='horas')
+                                <div class="form-group">
+                                        <label for="description">disponibilidad de {{ $type->quantity }} horas </label>                                
+                                    </div>
+                                @endif
+                                @if($type->name=='weekend')
+                                <div class="form-group">
+                                        <label for="description">disponibilidad de {{ $type->quantity }} </label>                                
+                                    </div>
+                                @endif
+                                @if($type->name=='nocturnos')
+                                <div class="form-group">
+                                        <label for="description">disponibilidad en turnos nocturnos </label>                                
+                                    </div>
+                                @endif
+                            @endforeach
+
+
+
                             <div class="form-group">
                                 <label for="iframe">Añade un video, pon el enlace para compartir(Opcional)</label>
                                 <textarea name="iframe" id="iframe" class="form-control">{{ old('iframe', $service->iframe) }}</textarea>
@@ -70,20 +94,21 @@
                             </div>
                             <div class="form-group">
                             <label for="cost">Puedes cancelar</label>
-                                <select name="status" id="status" class="custom-select" required>
-                                <option value="{{ old('state', $service->state) }}">{{ old('state', $service->state) }}</option>
-                                <option value="cancelado">Cancelar</option>
+                                <select name="state" id="state" class="custom-select" required>
+                                    <option value="{{ old('state', $service->state) }}">{{ old('state', $service->state) }}</option>
+                                    <option value="Estudiante">Cancelar</option>
                                 </select>
                             </div>
                             <input id="latbox" name="latbox" value="{{ old('latbox', $service->latbox) }}">
                             <input id="longbox" name="longbox" value="{{ old('longbox', $service->longbox) }}">
-                            <a class="btn-sm btn-primary float-right" href="{{ route('services.create') }}">Cancelar</a>
+                            <a class="btn-sm btn-primary float-right" href="{{ route('services.index') }}">Aceptar</a>
                         <div class="form-group">
                             @csrf
                             @method('PUT')
                             <input type="submit" value="Actualizar" class="btn-sm btn-primary">
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

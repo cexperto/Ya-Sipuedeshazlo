@@ -39,23 +39,23 @@ class ValorationServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //return 
+       // return $request;
         $valoration=$request->input('estrellas');
         $comments=$request->input('comment');
-        $codeUserValoration=$request->input('id');
+        $codServiceValoration=$request->input('id');
 
-        $valorationService = ValorationServices::where('id','=',$codeUserValoration);
-        if(empty($valorationService)){
-            $valoration = ValorationServices::create([
-                'valoration'            =>$valoration,
-                'comments'              =>$comments,
-                'codServiceValoration'  =>$codeUserValoration,
-            ]);
-            return back()->with('status', 'Gracias por valorar el servicio');
+        //$valorationService = ValorationServices::where('id','=',$codeUserValoration);
+        $valoration = ValorationServices::create([
+            'valoration'            =>$valoration,
+            'comments'              =>$comments,
+            'codServiceValoration'  =>$codServiceValoration,
+        ]);
+        return redirect('complete')->with('status','Gracias por comentar');
+        /* if(empty($valorationService)){
             //return $valorationService;
         }else{
             return back();
-        }
+        } */
 
 
     }

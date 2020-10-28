@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    /* $(document).ready(function(){
+        setTimeout(refrescar, 10000);
+    });
+    function refrescar(){        
+        location.reload();
+    } */
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -17,7 +25,7 @@
                             <div class="form-group row">
                             <div class="col-sm-6"><!-- primera columna -->
                                 <div class="form-group">
-                                        <label class="col-md-5 control-label">Datos del estudiante</label>                            
+                                        <label class="col-md-5 control-label">Datos del empleador</label>                            
                                  </div>
                                     @if($detail->image)
                                         <img src="{{ $detail->image }}" class="card-img-top" width="100%" height="300">
@@ -100,26 +108,18 @@
                                     <div class="form-group">
                                         <form action="{{ route('finish') }}" method="POST">
                                             <input type="hidden" name="idServices" id="idServices" value="{{ $detail->idServices }}">
-                                            <input type="submit" class="btn-primary float-right" value="terminar">                                    
+                                            <input type="submit" class="btn-primary float-right" value="Terminar">                                    
                                             @csrf
                                             @method('POST')
                                             
                                         </form>
-                                        <script>
-                                            $(document).ready(function(){
-                                                //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
-                                                setTimeout(refrescar, 2000);
-                                            });
-                                            function refrescar(){
-                                                //Actualiza la página
-                                                location.reload();
-                                            }
-                                        </script>
+                                        
                                     </div>
 
                                     
                             </div><!--  -->
                         </div>
+                       
                     </div>
                 </div>
                 <hr>

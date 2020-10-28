@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
-
+namespace App\Http\Controllers\Backend\employer;
+use App\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-class CompleteServicesController extends Controller
+
+class HistoryEmployerController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
     }
-    public function complete(){
+    public function history(){
         $idUser = auth()->user()->id;
         $sql = "SELECT users.id,users.name,
         users.lastName,users.phoneNumber,
         users.address,users.image as imageUsers ,
         users.documentNumber,users.state,
-        users.phoneNumber,users.address,
+        users.phoneNumber,
         users.email, 
         services.id as idServices,services.names,
-        services.description,services.duration,
+        services.description,
         services.cost,
         services.image as imageServices,services.state,
         services.longbox,services.latbox,
         services.employerId,services.codUserServices
         
         FROM users INNER JOIN services
-        WHERE users.id=services.codUserServices 
-        AND services.employerId=$idUser and services.state='Terminado'
+        WHERE users.id=services.codUserServices AND services.employerId=$idUser
            ";
         $services = DB::select($sql);
         /* if($services->isEmpty()){
@@ -39,8 +39,11 @@ class CompleteServicesController extends Controller
         //return $services;
                     //return view('employer.history')->with('vasio',$services);
 
-            return view('employer.complete', compact('services'));
+            return view('employer.history', compact('services'));
 
         
     }
 }
+/* 
+
+ */

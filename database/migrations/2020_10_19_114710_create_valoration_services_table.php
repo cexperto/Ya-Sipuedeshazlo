@@ -15,7 +15,7 @@ class CreateValorationServicesTable extends Migration
     {
         Schema::create('valoration_services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('valoration');
+            $table->integer('valoration');
             $table->string('comments');
             $table->timestamps();
             $table->bigInteger('codServiceValoration')->unsigned();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\employer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
@@ -33,7 +33,16 @@ class acquiredServiceController extends Controller
         AND users.id=services.codUserServices AND services.state='Adquirido'";
         $detailAcquireds =  DB::select($sql);
         //return $services;
-        return view('employer.buyServices', compact('detailAcquireds'));
+        $sqlType = "SELECT services.id,services.state,
+        type_of_services.id,services.employerId,
+        type_of_services.name,type_of_services.quantity,
+        type_of_services.codServicesType
+        FROM services INNER JOIN type_of_services
+        WHERE services.employerId=$idUser AND services.state='Adquirido'
+        AND services.id=type_of_services.codServicesType
+        ";
+        $types = DB::select($sqlType);
+        return view('employer.buyServices', compact('detailAcquireds','types'));
         /* $services = Service::where('employerId','=', auth()->user()->id)
                             ->where('status','=','Adquirido')
                             ->get(); */

@@ -568,7 +568,7 @@ text-decoration: none;
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container header__menu">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="header__img" src="https://i.imgur.com/Rh8iU2c.png" alt="">
+                    <img class="header__img" src="{{ asset('img/LOGO.png') }}" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -607,6 +607,11 @@ text-decoration: none;
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="">
+                                {{ __('Api') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('users.index') }}" >
                                 {{ __('Administrar usuarios') }}
                                 </a>
@@ -635,7 +640,7 @@ text-decoration: none;
                             </li>                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.index') }}">
-                                {{ __('Servicios actuales') }}
+                                {{ __('Servicios Disponibles') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -671,6 +676,11 @@ text-decoration: none;
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewFindSkills') }}" >
+                                {{ __('Buscar habilidades') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('acquired') }}" >
                                 {{ __('Servicios Adquiridos') }}
                                 </a>
@@ -688,6 +698,16 @@ text-decoration: none;
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->codUserRol == 2)
+                                <a class="dropdown-item" href="{{ route('viewMessage') }}">
+                                        {{ __('Mensajes') }}
+                                    </a>
+                                @endif
+                                @if(Auth::user()->codUserRol == 3)
+                                <a class="dropdown-item" href="{{ route('viewMessageEmployer') }}">
+                                        {{ __('Mensajes') }}
+                                    </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('Perfil') }}
                                     </a>

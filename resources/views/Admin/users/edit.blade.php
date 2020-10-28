@@ -24,8 +24,7 @@
 
                     <form action="{{ route('users.update', $user) }}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="title">id *</label>
-                            <input type="text" name="id" id="id" class="form-control" value="{{ old('id', $user->id) }}">
+                            <label for="title">id: {{$user->id}}</label><br>                            
                         </div>
                         <div class="form-group">                            
                             @if($user->codUserRol==2)
@@ -49,7 +48,7 @@
                         </div>                        
                         <div class="form-group">
                             <label for="title">Numero de documento  *</label>
-                            <input type="text" name="numberDocument" id="numberDocument" class="form-control" value="{{ old('numberDocument', $user->numberDocument) }}">
+                            <input type="text" name="documentNumber" id="documentNumber" class="form-control" value="{{ old('documentNumber', $user->documentNumber) }}">
                         </div>
                         <div class="form-group">
                             <label for="title">direccion  *</label>

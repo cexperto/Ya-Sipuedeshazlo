@@ -18,7 +18,7 @@ form p{
 input[type = "radio"]{ 
     display:none;/*position: absolute;top: -1000em;*/
     }
-label{ 
+.s{ 
     color:grey;
     }
 
@@ -27,11 +27,11 @@ label{
     unicode-bidi: bidi-override;
 }
 
-label:hover,
-label:hover ~ label{
+.s:hover,
+.s:hover ~ .s{
     color:orange;
     }
-input[type = "radio"]:checked ~ label{
+input[type = "radio"]:checked ~ .s{
     color:orange;
     }
 
@@ -39,7 +39,7 @@ input[type = "radio"]:checked ~ label{
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <div class="card-header"><center>{{ __('Servicios Completados') }}</div>
+        <div class="card-header"><center>{{ __('Servicios Terminados') }}</div>
         <div class="card-body">
 
         @if(Auth::User()->id)
@@ -51,19 +51,24 @@ input[type = "radio"]:checked ~ label{
                                     <img src="{{ $service->imageServices }}" class="card-img-top" width="100%" height="300">
                                     <div class="form-group">
                                             <div id="wrapper">
+                                            @if (session('status'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{ session('status') }}
+                                                </div>
+                                            @endif
                                                 <form action="{{ route('userValoration.store') }}" method="post">
                                                     {{ __('Por favor califica al empleador') }}
                                                         <p class="clasificacion">
                                                             <input id="radio1" type="radio" name="estrellas" value="5">
-                                                            <label for="radio1">&#9733;</label>
+                                                            <label class="s" for="radio1">&#9733;</label>
                                                             <input id="radio2" type="radio" name="estrellas" value="4">
-                                                            <label for="radio2">&#9733;</label>
+                                                            <label class="s" for="radio2">&#9733;</label>
                                                             <input id="radio3" type="radio" name="estrellas" value="3">
-                                                            <label for="radio3">&#9733;</label>
+                                                            <label class="s" for="radio3">&#9733;</label>
                                                             <input id="radio4" type="radio" name="estrellas" value="2">
-                                                            <label for="radio4">&#9733;</label>
+                                                            <label class="s" for="radio4">&#9733;</label>
                                                             <input id="radio5" type="radio" name="estrellas" value="1">
-                                                            <label for="radio5">&#9733;</label>
+                                                            <label class="s" for="radio5">&#9733;</label>
                                                         </p>
                                                         <input type="hidden" name="id" id="id" value="{{ $service->employerId }}">
                                                         <center>Añade un comentario

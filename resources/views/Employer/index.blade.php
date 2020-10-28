@@ -22,11 +22,11 @@
                         
                                 <div class="col-sm-6"><!-- segunda columna -->
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label"></label>
-                                        {{ $service->names }}
+                                        <label class="col-md-5 control-label">{{ $service->names }}</label>
+                                        
                                     </div>
                                         <div class="form-group">
-                                            <label class="col-md-5 control-label">Descripcion</label>
+                                            <label class="col-md-5 control-label">Descripcion</label><br>
                                             {{ $service->description }} 
                                         </div>
                                         <div class="form-group">
@@ -36,7 +36,7 @@
                                         
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Estado:</label>
-                                            {{ $service->status }}
+                                            {{ $service->state }}
                                             
                                             <form action="{{ route('selectService')}}" method="POST">
                                             @csrf

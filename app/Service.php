@@ -35,4 +35,8 @@ class Service extends Model
     {
         return $this->hasOne(ValorationServices::class);
     }
+    public function typeServices()
+    {
+        return $this->hasOne(TypeOfService::class);
+    }    
 }

@@ -85,7 +85,7 @@ class ProfileController extends Controller
      */
     public function userUpdate(ProfileRequest $request)
     {
-        
+        //return $request->file('file');
         $userUpdate =[
             'address'     => $request->input('address'),
             'phoneNumber' => $request->input('phoneNumber'),

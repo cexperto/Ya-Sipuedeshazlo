@@ -13,11 +13,26 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="form-group">
+                            @if(!empty($errors->all()))                            
+                                    <div class="notificationDanger">                                        
+                                        <div class="notificationDanger--item">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>
+                                                    {{ $error }}
+                                                </li>
+                                            @endforeach                            
+                                        </ul>
+                                        </div>                                           
+                                    </div>
+                            @endif                                    
+                            </div>
                     
                     <form action="/userUpdate" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Actualiza tu imagen de perfil</label>
-                                <input type="file" name="file">
+                                <input type="file" name="file" accept="image/*">
                             </div>                            
 							<div class="form-group">
                             {{ old('name', Auth::user()->name) }}
@@ -26,16 +41,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="address">Actualiza tu direccion</label>
-                                <input type="text" name="address" id="address" class="form-control" value="{{ old('address', Auth::user()->address) }}">
-                                
+                                <input type="text" name="address" id="address" class="form-control" value="{{ old('address', Auth::user()->address) }}">                                
                             </div>
-                            <a class="btn-sm btn-primary float-right" href="{{ route('profile.index') }}">Cancelar</a>
-                        <div class="form-group">
-                            @csrf
-                            
-                            <input type="submit" value="Actualizar" class="btn-sm btn-primary">
-                        </div>
-                    </form>
+                            <a class="btn-sm btn-primary float-right" href="{{ route('profile.index') }}">Aceptar</a>
+                            <div class="form-group">
+                                @csrf                                
+                                <input type="submit" value="Actualizar" class="btn-sm btn-primary">
+                            </div>
+                    </form>                    
                 </div>
             </div>
         </div>

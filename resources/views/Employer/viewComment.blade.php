@@ -9,11 +9,7 @@
 
         @if(Auth::User()->id)
             @foreach($valorations as $valoration)
-                @if($valoration)
-                    <div class="form-group">                                   
-                        <label class="col-md-5 control-label">Nombre del servicio</label>
-                            {{ $valoration->names }}                    
-                    </div>
+                @if($valoration)                    
                     <div class="form-group">                                   
                         <label class="col-md-5 control-label">valoracion</label>
                             {{ $valoration->valoration }}                    

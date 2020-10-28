@@ -51,6 +51,12 @@ class User extends Authenticatable
     public function services(){
         return $this->hasMany(Service::class);
     }
+    public function skills(){
+        return $this->hasMany(Skill::class);
+    }
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+    }
     
     //roles
     public $permisos = [

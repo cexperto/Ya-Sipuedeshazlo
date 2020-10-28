@@ -15,8 +15,9 @@ class CreateValorationsTable extends Migration
     {
         Schema::create('valorations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('valoration');
+            $table->integer('valoration');
             $table->string('comments');
+            $table->integer('evaluator');
 
             $table->bigInteger('codeUserValoration')->unsigned();
             

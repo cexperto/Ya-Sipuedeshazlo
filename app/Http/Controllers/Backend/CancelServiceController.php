@@ -17,7 +17,7 @@ class CancelServiceController extends Controller
         $service = DB::table('services')
             ->where('id', $idService)
             ->update([                
-                'state'      => 'estudiante'
+                'state'      => 'Estudiante'
             ]);
             return view('cancelServices');  
         

@@ -9,12 +9,14 @@
 
         @if(Auth::User()->id)
             @foreach($valorations as $valoration)
-                @if($valoration)
+                @if($valoration->id)
+                     @if($valoration->valoration)
+                        <div class="form-group">                                   
+                            <label class="col-md-5 control-label">Valoracion</label>
+                                {{ $valoration->valoration }}                    
+                        </div>
+                     @endif
                     
-                    <div class="form-group">                                   
-                        <label class="col-md-5 control-label">valoracion</label>
-                            {{ $valoration->valoration }}                    
-                    </div>
                     @if($valoration->comments)
                     <div class="form-group">                                   
                         <label class="col-md-5 control-label">comentarios</label>

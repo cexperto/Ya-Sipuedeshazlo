@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\employer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class CancelServicesStudentController extends Controller
+use DB;
+class CancelServiceEmployerController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
     }
-    public function cancelServiceStudent(Request $request){
-        $idService = $request->input('idServices');        
-        
+    public function cancelServiceEmployer(Request $request){
+        $idService = $request->input('id');        
+        //return $idService;
         $service = DB::table('services')
             ->where('id', $idService)
             ->update([                
-                'state'      => 'estudiante'
+                'state'      => 'Empleador'
             ]);
-            return view('historyStudent');  
+            return redirect('historyEmployer')->with('status','Cancelado');  
         
         /* if(auth()->user()->codUserRol ==2){
         }

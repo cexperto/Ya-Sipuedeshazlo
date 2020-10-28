@@ -15,10 +15,10 @@
                             @if ($user->image)
                                 <img src="{{ $user->get_image }}" class="img-thumbnail">
                                 @else
-                                <img src="https://i.imgur.com/qjCayCS.jpg" class="img-thumbnail" alt="avatar">
+                                <img src="{{ asset('img/perfil.jpg') }}" class="img-thumbnail" alt="avatar">
                             @endif    
                                 <!-- <input type="file" class="form-control"> -->
-                               
+                                
                     </div><!-- fin de primera columna -->
                     
 					          <div class="col-sm-6"><!-- segunda columna -->
@@ -65,7 +65,13 @@
                               
                             </div>
                           
-                      </div><!-- fin 2da columna -->                      
+                      </div><!-- fin 2da columna --> 
+                      @if(Auth::user()->codUserRol == 2)
+                                    <div class="form-group">
+                                        <label for="skills">Puedes añadir habilidades</label>
+                                        <a href="{{ route('skills.index') }}" class="btn-sm btn-primary">añadir</a>
+                                    </div>
+                                @endif                     
               </div>    
         </div>                                
     </div>        

@@ -94,6 +94,7 @@ class AdminRolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        return $role;
+        $role->delete();
+        return back()->with('status', 'Eliminado con exito');
     }
 }

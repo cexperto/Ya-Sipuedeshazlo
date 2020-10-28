@@ -16,7 +16,7 @@
                                     <img src="{{ $detailAcquired->image }}" class="card-img-top" width="100%" height="300">
                                     <div class="form-group">
                                         <label class="col-md-5 control-label"></label>
-                                        <form action="{{ route('cancelService') }}" method="POST">
+                                        <form action="{{ route('cancelServiceEmployer') }}" method="POST">
                                         <input type="hidden" name="id" id="id" value="{{ $detailAcquired->idServices }}">
                                         <input type="submit" value="Cancelar" class="btn-sm btn-danger" onclick="return confirm('¿Desea cancelar?')">
                                         @csrf
@@ -35,9 +35,30 @@
                                     </div>
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Descripcion</label><br>
-                                            {{ $detailAcquired->description }}
-                                            
+                                            {{ $detailAcquired->description }}                                            
                                         </div>
+                                        @foreach($types as $type)
+                                            @if($type->name=='servicios')
+                                                <div class="form-group">
+                                                    <label for="description">cobro por servicios </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='horas')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad de {{ $type->quantity }} horas </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='weekend')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad de {{ $type->quantity }} </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='nocturnos')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad en turnos nocturnos </label>                                
+                                                </div>
+                                            @endif
+                                        @endforeach
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Costo</label>
                                             {{ $detailAcquired->cost }} 
@@ -67,7 +88,7 @@
                             <script>
                                 $(document).ready(function(){
                                     //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
-                                    setTimeout(refrescar, 2000);
+                                    setTimeout(refrescar, 10000);
                                 });
                                 function refrescar(){
                                     //Actualiza la página

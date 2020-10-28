@@ -17,7 +17,7 @@
                             <div class="form-group row">
                             <div class="col-sm-6"><!-- primera columna -->
                                 <div class="form-group">
-                                        <label class="col-md-5 control-label">Datos del estudiante</label>                            
+                                       <strong>Datos del estudiante</strong>
                                  </div>
                                     @if($service->imageUsers)
                                         <img src="{{ $service->image }}" class="card-img-top" width="100%" height="300">
@@ -28,7 +28,7 @@
                         
                                 <div class="col-sm-6"><!-- segunda columna -->
                                    
-                                    <div class="form-group">
+                                    <div class="form-group"><br>
                                         <label class="col-md-5 control-label">Id</label>
                                         {{ $service->id }}
                                     </div>
@@ -48,34 +48,34 @@
                                         <label class="col-md-6 control-label">Numero de identificacion</label>
                                         {{ $service->documentNumber }}
                                     </div>
+                                    <div class="form-group"><br><br>
+                                           <strong> Datos del Servicio</strong>
+                                    </div>
                                    
                                 </div><!-- fin 2 da -->
                                 
                                 <div class="col-sm-6"><!-- tercera columna -->                            
-                                    <div class="form-group">
-                                            <label class="col-md-5 control-label">Datos del Servicio</label>                            
-                                    </div>
-                                        @if($service->imageServices)
-                                            <img src="{{ $service->image }}" class="card-img-top" width="100%" height="300">
-                                            @else
-                                            <img src="https://i.imgur.com/FmGtiUJ.jpg" class="card-img-top" width="100%" height="300" alt="No imagen">
-                                        @endif
-
-                                </div><!-- fin promera columna -->
-                                
-
-                                <div class="col-sm-6"><!-- cuarta columna -->
-                                    <div class="form-group">
+                                    
+                                    <div class="form-group"><br>
                                                 <label class="col-md-5 control-label">Id</label>
                                                 {{ $service->idServices }}                            
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label">Nombre del servicio</label>
+                                        <label class="col-md-8 control-label">Nombre del servicio</label><br>
                                         {{ $service->names }} 
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-5 control-label">Descripcion</label>
-                                        {{ $service->description }} 
+                                        <label class="col-md-5 control-label">Descripcion</label><br>
+                                        {{ $service->description }}
+                                    </div>   
+
+                                </div><!-- fin  columna -->
+                                
+
+                                <div class="col-sm-6"><!-- cuarta columna -->
+                                <div class="form-group">
+                                        <label class="col-md-5 control-label"></label>
+                                        
                                     </div>
                                    
                                     <div class="form-group">
@@ -84,12 +84,26 @@
                                     </div>
                                     
                                     
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Estado</label>
-                                        {{ $service->state }} 
-                                    </div>
+                                    @if($service->state=='Terminado')
+                                            <div class="form-group">
+                                            <label class="col-md-5 control-label">Estado:</label>
+                                            Terminado con exito
+                                            </div>
+                                        @endif
+                                        @if($service->state=='Empleador')
+                                            <div class="form-group">
+                                            Estado:<br>
+                                            Cancelado por empleador
+                                            </div>
+                                        @endif
+                                        @if($service->state=='Estudiante')
+                                            <div class="form-group">
+                                            <label class="col-md-5 control-label">Estado</label><br>
+                                                Cancelado por estudiante
+                                            </div>
+                                        @endif
                                     <script>
-                                        $(document).ready(function(){
+                                        /* $(document).ready(function(){
                                             //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
                                             setTimeout(refrescar, 2000);
                                         });
@@ -97,7 +111,7 @@
                                             //Actualiza la página
                                             //alert("Hola mundo");
                                             location.reload();
-                                        }
+                                        } */
                                     </script>
                                 </div>
                             </div>

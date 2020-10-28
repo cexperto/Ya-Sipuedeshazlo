@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\employer;
 use App\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class BuyServiceController extends Controller
             ->where('id', $idService)
             ->update([
                 'employerId' => auth()->user()->id,
-                'status'      => 'Adquirido'
+                'state'      => 'Adquirido'
             ]);
             //$service->save();
             return view('employer.succesBuyServices');

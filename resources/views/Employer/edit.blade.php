@@ -21,14 +21,36 @@
                                 </div><!-- fin promera columna -->
                         
                                 <div class="col-sm-6"><!-- segunda columna -->
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Nombre</label>
-                                        {{ $service->names }}
-                                    </div>
                                         <div class="form-group">
-                                            <label class="col-md-5 control-label">Descripcion</label><hr>
+                                            <label class="col-md-5 control-label">Nombre</label><br>
+                                            {{ $service->names }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-5 control-label">Descripcion</label><br>
                                             {{ $service->description }} 
                                         </div>
+                                        @foreach($types as $type)
+                                            @if($type->name=='servicios')
+                                                <div class="form-group">
+                                                    <label for="description">cobro por servicios </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='horas')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad de {{ $type->quantity }} horas </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='weekend')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad de {{ $type->quantity }} </label>                                
+                                                </div>
+                                            @endif
+                                            @if($type->name=='nocturnos')
+                                            <div class="form-group">
+                                                    <label for="description">disponibilidad en turnos nocturnos </label>                                
+                                                </div>
+                                            @endif
+                                        @endforeach
                                         <div class="form-group">
                                             <label class="col-md-5 control-label">Costo aproximado</label>
                                             {{ $service->cost }} 
