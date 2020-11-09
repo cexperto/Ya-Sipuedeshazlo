@@ -18,7 +18,11 @@ class EmployerMiddleware
         //return $next($request);
         //return $next($request);
         if (auth()->check() && auth()->user()->codUserRol==3)
-            return $next($request);
+            if(auth()->user()->image && auth()->user()->phoneNumber)
+                return $next($request);
+            else{
+                return redirect('profile')->with('status','Por favor suba una foto de perfil y registre numero de telefono');
+            }
 
         return redirect('login');
     }

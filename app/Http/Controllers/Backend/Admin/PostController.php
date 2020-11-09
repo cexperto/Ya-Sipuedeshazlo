@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Service;
+use App\User;
 use Illuminate\Http\Request;
-
-class ServiceController extends Controller
+Use DB;
+class PostController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -18,9 +19,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::latest()->get();
-        return view('employer.index',compact('services'));
-        
+        $posts = Service::latest()->get();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -61,11 +61,22 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Service $post)
     {
-        return view('employer.edit', compact('service'));
-    }
+        //cosulta ver detalle
+        /* $idService =$post['id'];
+        $employerId= $post['employerId'];
+        $sql = "SELECT users.name,
+        users.email,users.phoneNumber, 
+        services.names 
+        FROM users INNER JOIN services
+        WHERE users.id=$employerId AND services.id=$idService";
+        $r = DB::select($sql,array(1,20));
+        return $r; */
+        return view('posts.edit',compact('post'));
 
+    }
+    
     /**
      * Update the specified resource in storage.
      *
@@ -75,7 +86,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $post->update($request->all());
+        /* if($request->file('file')){
+            Storage::disk('public')->delete($post->image);
+            $post->image = $request->file('file')->store('posts', 'public');
+            $post->save();
+        } */
+        return back()->with('status', 'Actualizado con exito');
     }
 
     /**
@@ -84,8 +101,12 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $services = Service::where('id','=',$id);
+        $services->delete();
+        return back()->with('status', 'Eliminado con exito');
+
     }
 }

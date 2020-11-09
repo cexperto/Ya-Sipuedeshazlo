@@ -32,6 +32,7 @@ class ServiceController extends Controller
             return view('student.create');
         }else{
             //return 'no vasio';
+          //  return $services;
         return view('student.index',compact('services'));
 
         }
@@ -56,42 +57,53 @@ class ServiceController extends Controller
     {
         //se registran los servicios
         //dd($request->all());
-        //return $request;
-        $name         = $request->input('names');
+        //return 
+        $name          = $request->input('names');
+        $otro          = $request->input('otro');        
         $hours         = $request->input('hours');
         $disponibility = $request->input('disponibility');
         $days          = $request->input('days');
         $userId = auth()->user()->id;
-        if($name == 'otro'){
+        
+        if($name == 'otro'){            
             //$name = $request->input('otro');
+            
             $service = Service::create([
-                'names'           => $name,
+                'names'           => $otro,                      
                 'description'     => $request['description'],
+                'iframe'          => $request['iframe'],
                 'cost'            => $request['cost'],
                 'latbox'          => $request['latbox'],
                 'longbox'         => $request['longbox'],
                 'state'          => 'Disponible',
                 'codUserServices' => $userId,
             ]);
+            $img=$request->file('file');
+            if($img){
+                $service->image = $img->store('services/'.$userId, 'public');
+                //$service = Storage::url($images);
+                $service->save();
+            }
         }else{
-            //return $name;
-
             $service = Service::create([
-                'names'           => $request['names'],
+                'names'           => $request['names'],                
                 'description'     => $request['description'],
+                'iframe'          => $request['iframe'],
                 'cost'            => $request['cost'],
                 'latbox'          => $request['latbox'],
                 'longbox'         => $request['longbox'],
                 'state'          => 'Disponible',
                 'codUserServices' => auth()->user()->id,
             ]);
-        }
-        //]+$request->all());
-        //imagen
-        if($request->file('file')){
-            $service->image = $request->file('file')->store('services', 'public');
+            $img=$request->file('file');
+            if($img){
+            $service->image = $img->store('services/'.$userId, 'public');
+            //$service = Storage::url($images);
             $service->save();
         }
+        }
+                
+        
         $codServices = Service::latest('id')->first()->id;
         if($hours){            
             $type = TypeOfService::create([                
@@ -120,7 +132,7 @@ class ServiceController extends Controller
                 ]);
                 }        
         //retornar
-        return back()->with('status', 'Felicidades, servicio publicado con exito');
+        return redirect('services')->with('status', 'Felicidades, servicio publicado con exito');
     }
 
     /**
@@ -176,10 +188,26 @@ class ServiceController extends Controller
     public function update(ServiceStudentRequest $request, Service $service)
     {
         //return $request;
-        $service->update($request->all());
+        $userId = auth()->user()->id;
+        $name = $request['names'];
+        $description = $request['description'];
+        $iframe = $request['iframe'];
+        $cost = $request['cost'];
+        $state = $request['state'];
+        $latbox = $request['latbox'];
+        $longbox = $request['longbox'];        
+        $service->update([
+            'names'             => $name,
+            'description'       => $description,
+            'iframe'            => $iframe,
+            'cost'              => $cost,
+            'state'             => $state,
+            'latbox'            => $latbox,
+            'longbox'           => $longbox,
+        ]);
         if($request->file('file')){
             Storage::disk('public')->delete($service->image);
-            $service->image = $request->file('file')->store('services', 'public');
+            $service->image = $request->file('file')->store('services/'.$userId, 'public');
             $service->save();
         }
         return back()->with('status', 'Actualizado con exito');

@@ -25,7 +25,7 @@ class ServiceStudentRequest extends FormRequest
     {
         return [
             'names'          => ['required','string'],            
-            'description'   => ['required', 'string','max:100'],
+            'description'   => ['required','string'],
             'cost'          => ['required', 'integer'],
             'latbox'        => 'required',
             'longbox'       => 'required',            
@@ -33,11 +33,12 @@ class ServiceStudentRequest extends FormRequest
     }
     public function messages(){
         return[
-            'names.required' => 'Es importante que selecciones tu oficio',
-            'description.required' => 'Es importante que escribas una descripcion valida',
-            'description.min' => 'Es importante la decripcion posea mas de 10 caracteres',
-            'cost.required' => 'Es importante que introduscas un valor',
-            'cost.integer' => 'El costo debe ser un valor numerico',
+            'names.required'        => 'Es importante que selecciones tu oficio',
+            'description.required'  => 'Es importante que escribas una descripcion valida',            
+            'cost.required'         => 'Es importante que introduscas un costo',
+            'cost.integer'          => 'El costo debe ser un valor numerico',
+            'latbox.required'       => 'Debes esperar que el mapa se muestre correctamente',
+            'longbox.required'      => 'Debes esperar que el mapa se muestre correctamente',
         ];
     }
 }

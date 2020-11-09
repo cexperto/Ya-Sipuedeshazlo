@@ -6,6 +6,11 @@
         <div class="col-md-8">
         <div class="card-header"><center>{{ __('Servicios terminados') }}</div>
         <div class="card-body">
+        @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
 
         @if(Auth::User()->id)
             @foreach($services as $service)
@@ -21,8 +26,10 @@
                                         {{ $service->names }}
                                     </div>                                    
                                     <div class="form-group">
-                                        Descripcion<br>
-                                        {{ $service->description }}                                            
+                                            Descripcion
+                                        <div class="description">
+                                            {{ $service->description }}                                            
+                                        </div>
                                     </div>
                                 </div><!-- fin primera columna -->                        
                                 <div class="col-sm-6"><!-- segunda columna -->

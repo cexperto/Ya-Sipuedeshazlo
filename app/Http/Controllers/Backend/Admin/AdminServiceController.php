@@ -19,7 +19,7 @@ class adminServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::where('id','>',1)->get();
+        $services = Service::latest()->get();
         return view('admin/services.index',compact('services'));
     }
 
@@ -63,8 +63,8 @@ class adminServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //return $service;
-        return view('Admin/services.edit', compact('service'));                
+        return $service;
+        //return view('Admin/services.edit', compact('service'));                
     }
 
     /**

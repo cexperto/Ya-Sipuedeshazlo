@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Backend\student;
-use DB;
+use App\Service;
+use App\TypeOfService;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -28,19 +30,32 @@ class RunningServicesStudentController extends Controller
         WHERE services.employerId=users.id AND services.codUserServices=$idU 
         AND services.state='Adquirido'";
         //$sql2 ="SELECT * FROM users WHERE ";
-        $details = DB::select($sql);
+        $services= Service::where('codUserServices','=',$idU)
+                            ->where('state','=','Adquirido')->get();
+        $count = count($services);
+        //return $count;
+        //$details = DB::select($sql);
         // $coleccion =['nombrex'=>$services];
         //return $services;
-        return view('student.running', compact('details'));
+        //return view('student.running', compact('services'));
         //return $services;
-        if($services->isEmpty()){
+        //return 'hola';
+        if($count==0){
             //return 'vasio';
-            return view('student.create');
+            return redirect('services')->with('status','Ningun empleador a adquirido tus servicios');
         }else{
             //return 'no vasio';
         return view('student.running',compact('services'));
-
         }
+    }
+    public function runningDetaill(Request $request){
+        $id = $request->input('id');
+        $employerId = $request->input('employerId');
+        $users = User::where('id','=',$employerId)->get();
+        $types = TypeOfService::where('codServicesType','=',$id)->get();
+        $services = Service::where('id','=',$id)->get();
+        //return $types;
+        return view('student.runningDetaill',compact('users','services','types'));
     }
 }
 /* 

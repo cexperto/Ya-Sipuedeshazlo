@@ -63,3 +63,13 @@ class ServiceController extends Controller
     }
 
 }
+/* env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=5b3b70680fae3c
+MAIL_PASSWORD=ff45bb70d08e14
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=sipuedeshazloya@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+ */

@@ -16,9 +16,9 @@
 
                                 <div class="col-sm-6"><!-- primera columna -->
                                     @if($service->image)
-                                        <img src="{{ $service->image }}" class="card-img-top" width="100%" height="300">
+                                        <img src="{{ $service->get_image }}" class="card-img-top" width="100%" height="300">
                                         @else
-                                            <img src="https://i.imgur.com/FmGtiUJ.jpg" class="card-img-top" width="100%" height="300">
+                                            <img src="{{ asset('img/mark-804938_1920.jpg') }}" class="card-img-top" width="100%" height="300">
                                     @endif
                                 </div><!-- fin promera columna -->
                         
@@ -27,12 +27,13 @@
                                         <label class="col-md-5 control-label">Nombre</label><br>
                                         {{ $service->names }} 
                                     </div>
-                                        <div class="form-group">
-                                                                                       
+                                        <div class="form-group">                       
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Descripcion</label><br>                                                                                     
-                                            {{ $service->description }} 
+                                            <div class="description">
+                                                {{ $service->description }} 
+                                            </div>
                                         </div>
                                         @if($service->cost=3750)
                                         <div class="form-group">
@@ -61,13 +62,23 @@
                                             <div class="form-group">
                                             <label class="col-md-3 control-label">Estado:</label>
                                                 Cancelado por estudiante
-                                            </div>
+                                            </div>                                            
                                         @endif
-
-                                    @foreach($employers as $employer)
+                                        @foreach($employers as $employer)
+                                            @if($employer->id)
+                                            
+                                            @endif
+                                </div><!-- fin 2 da -->
+                                
+                                <div class="col-sm-6"><!-- tercera columna -->
+                                    
                                         @if($employer->id)
-                                            <div class="card-header"><center>{{ __('Datos de empleador') }}</div>
-                                    <div class="form-group">
+                                        <div class="card-header"><center></div>                                        
+                                            <img src="{{ $employer->get_image }}" class="card-img-top" width="100%" height="300">
+                                        
+                                </div><!-- fin tercera columna -->
+                                <div class="col-sm-6"><!-- cuarta columna -->
+                                    <div class="card-header"><center>{{ __('Datos de empleador') }}</div>                                    <div class="form-group">
                                         <label class="col-md-5 control-label">Nombre</label>                                        
                                         {{ $employer->name }}{{ $employer->lastName }}
                                     </div>
@@ -78,14 +89,21 @@
                                     <div class="form-group">
                                         <label class="col-md-5 control-label">Correo</label>                                        
                                         {{ $employer->email }}
-                                    </div>
-                                        @endif
-                                    @endforeach
+                                    </div>                                    
+                                    @endif
+                                @endforeach
+                                    
+                                </div><!-- fin cuarta columna -->
+                                <div class="col-sm-6">
+                                    <div class="form-group"></div>
+                                </div>
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <a href="{{ route('historyStudent')}}" class="btn-sm btn-primary float-right" >Aceptar</a>    
                                     </div>
-                                        
-                                </div><!-- fin 2 da -->
+                                </div>
+                                
+                                </div>
                             </div>
                             <script>
                                /*  $(document).ready(function(){
@@ -100,7 +118,7 @@
                             </script>
                     </div>
                 </div>
-                <hr>
+                <hr>                
             @endforeach
         @endif
         </div>

@@ -11,6 +11,7 @@ class FinishServicesController extends Controller
         $this->middleware('auth');
     }
     public function finish(Request $request){
+        //return $request;
         $idService = $request->input('idServices');        
         
         $service = DB::table('services')

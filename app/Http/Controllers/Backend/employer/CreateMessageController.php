@@ -9,7 +9,7 @@ use DB;
 class CreateMessageController extends Controller
 {
     public function createMessage(Request $request){
-        return $request;
+        //return $request;
         $sender = auth()->user()->id;
         //return $sender;
         $codUser = $request->input('codUser');
@@ -20,7 +20,7 @@ class CreateMessageController extends Controller
             'sender'          => $sender,
             'codUserContact'  => $codUser,                  
         ]);
-        return redirect('viewFindSkills')->with('status', 'enviado con exito');
+        return redirect('viewFindSkills')->with('status', 'Enviado con exito');
 
     }
     public function viewMessage(){

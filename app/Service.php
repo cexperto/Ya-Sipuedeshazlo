@@ -38,5 +38,8 @@ class Service extends Model
     public function typeServices()
     {
         return $this->hasOne(TypeOfService::class);
-    }    
+    }
+    public function applications(){
+        return $this->hasMany(Application::class);
+    }
 }

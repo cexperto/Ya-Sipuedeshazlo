@@ -88,8 +88,13 @@
                                 <label for="iframe">Añade un video, pon el enlace para compartir(Opcional)</label>
                                 <textarea name="iframe" id="iframe" class="form-control">{{ old('iframe', $service->iframe) }}</textarea>
                             </div>
+                            @if($service->iframe)
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    {!! $service->iframe !!}
+                                </div>
+                            @endif
 							<div class="form-group">
-                                <label for="cost">Dinos cual es el costo aproximado de tu servicio</label>
+                                <label for="cost">Costo aproximado del servicio</label>
                                 <input type="text" name="cost" id="cost" class="form-control" value="{{ old('cost', $service->cost) }}">
                             </div>
                             <div class="form-group">

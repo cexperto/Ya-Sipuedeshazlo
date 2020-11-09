@@ -8,20 +8,21 @@
         <div class="card-body">
 
         @if(Auth::User()->id)
-            @foreach($valorations as $valoration)
-                @if($valoration)                    
-                    <div class="form-group">                                   
-                        <label class="col-md-5 control-label">valoracion</label>
-                            {{ $valoration->valoration }}                    
-                    </div>
-                    @if($valoration->comments)
-                    <div class="form-group">                                   
-                        <label class="col-md-5 control-label">comentarios</label>
-                            {{ $valoration->comments }}                    
-                    </div>
-                    @endif
-                @endif
-            @endforeach
+        <table class="table">
+                        <thead>                            
+                            <th>Valoracion</th>
+                            <th>Comentarios</th>                          
+                            <th colspan="2">&nbsp;</th>
+                        </thead>
+                        <tbody>
+                            @foreach($valorations as $valoration)
+                                <tr>
+                                    <td>{{ $valoration->valoration }}</td>
+                                    <td>{{ $valoration->comments }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
         @endif
         </div>
         </div>

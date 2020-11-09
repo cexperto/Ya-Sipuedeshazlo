@@ -7,9 +7,12 @@
             Quienes somos
             </div>
             <div class="section__container--content">
-                Somos una startup que ayuda a estudiantes universitarios a obtener ingresos segun sun habilidades 
-                y tiempo libre conectandolos con la industria laboral para que logren culminar sus estudios y 
-                obtengan experiencia
+            ¡YA! se consideró desde el inicio de su planificación 
+            como una herramienta de solución, frente al problema 
+            que existe debido a la falta de oportunidades laborales 
+            que no permiten a los estudiantes desempeñarse en algún 
+            campo laboral y adquirir recursos económicos para suplir 
+            sus gastos.
             </div>
         </div>
        <div class="section__container--item">
@@ -17,7 +20,11 @@
                 Mision
            </div>
            <div class="section__container--content">
-            Contribuir a la mejora de la economia de los jovenes a travez de sus habilidades 
+           El sistema de información tiene como finalidad generar 
+           inclusión laboral para aquellas personas que recién 
+           obtuvieron un título académico, profesional o se encuentran 
+           cursando algún pregrado y no han realizado ninguna labor 
+           en alguna compañía que certifique y avale su experiencia laboral.
         </div>
        </div>
        <div class="section__container--item">

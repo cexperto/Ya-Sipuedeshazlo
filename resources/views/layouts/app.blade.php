@@ -24,8 +24,7 @@
 </head>
 <style>
 .header__img {
-  width: 50px;
-  margin-top: 5px;    
+  width: 80px;  
 }
 .header__menu--item{
   line-height: 4rem;
@@ -39,8 +38,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 0% 30px;
-    min-height: calc(100vh - 200px);
-    margin-top: 50px;
+    min-height: calc(100vh - 200px);    
 }
 .contact__container{
     background-color: rgba(255, 255, 255, 0.1);
@@ -48,7 +46,7 @@
     border-radius: 40px;
     color: black;
     padding: 20px 68px;
-    min-height: 500px;
+    min-height: 400px;
     width: 400px;
     display: flex;
     justify-content: space-around;
@@ -149,7 +147,7 @@ main
 /* 
 carousel
  */
-.categories__title {
+/* .categories__title {
   color: white;
   font-size: 16px;
   position: absolute;
@@ -158,7 +156,7 @@ carousel
 }
 .carousel{
     width: 100%;
-    /* overflow: scroll; */
+    /* overflow: scroll;
     padding: 30px;
     position: relative;
 }
@@ -234,6 +232,11 @@ carousel
     height: 250px;
     object-fit: cover;
 }
+.description{
+    width: 100%;  
+    height: auto;
+    word-wrap: break-word;
+    }
 /* 
 seccion y footer
 */
@@ -250,9 +253,9 @@ seccion y footer
 .section__container--item{
     font-family: 'Muli', sans-serif;
     margin-top: 20px;
-    width: 100%;
+    width: 100%;    
     flex-direction: row;
-    color: black;
+    color: black;    
 }
 .section__container--title{
     font-size: 30px;
@@ -269,7 +272,7 @@ seccion y footer
     margin-left: 5px;
     padding: 15px;
     font-size: 20px;
-    height: 200px;
+    height: 350px;
     border-right: 1px solid #ccedd2;
     border-bottom: 1px solid #ccedd2;
     border-radius: 15px;
@@ -605,12 +608,7 @@ text-decoration: none;
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('adminHome') }}">
                                 {{ __('Inicio') }}
                                 </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="">
-                                {{ __('Api') }}
-                                </a>
-                            </li>
+                            </li>                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('users.index') }}" >
                                 {{ __('Administrar usuarios') }}
@@ -629,18 +627,23 @@ text-decoration: none;
                             @endif
                             @if(Auth::user()->codUserRol == 2)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyStudent') }}" >
-                                {{ __('Historial') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.create') }}">
+                                {{ __('Publicar servicios') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsStudent') }}" >
-                                {{ __('Valoraciones y comentarios') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('offerStudent') }}">
+                                {{ __('Ofertas laborales') }}
                                 </a>
-                            </li>                            
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.index') }}">
                                 {{ __('Servicios Disponibles') }}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('runningServicesStudent') }}" >
+                                {{ __('Servicios en ejecucion') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -649,30 +652,25 @@ text-decoration: none;
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('services.create') }}">
-                                {{ __('Publicar servicios') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsStudent') }}" >
+                                {{ __('Valoraciones y comentarios') }}
                                 </a>
-                            </li>
+                            </li>                            
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('runningServicesStudent') }}" >
-                                {{ __('Servicios en ejecucion') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyStudent') }}" >
+                                {{ __('Historial') }}
                                 </a>
                             </li>
                             @endif
                             @if(Auth::user()->codUserRol == 3)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyEmployer') }}" >
-                                {{ __('Historial') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('employer.create') }}" >
+                                {{ __('Buscar servicios') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsEmployer') }}" >
-                                {{ __('Valoraciones y comentarios') }}
-                                </a>
-                            </li>                            
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('employer.create') }}" >
-                                {{ __('Buscar servicios') }}
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('offer') }}" >
+                                {{ __('Publicar oferta') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -690,7 +688,16 @@ text-decoration: none;
                                 {{ __('Servicios terminados') }}
                                 </a>
                             </li>
-                            
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('viewCommentsEmployer') }}" >
+                                {{ __('Valoraciones y comentarios') }}
+                                </a>
+                            </li>                            
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('historyEmployer') }}" >
+                                {{ __('Historial') }}
+                                </a>
+                            </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -701,12 +708,18 @@ text-decoration: none;
                                 @if(Auth::user()->codUserRol == 2)
                                 <a class="dropdown-item" href="{{ route('viewMessage') }}">
                                         {{ __('Mensajes') }}
-                                    </a>
+                                </a>
+                                <a class="dropdown-item" href="{{ route('supportStudent.index') }}">
+                                        {{ __('Soporte') }}
+                                </a>
                                 @endif
                                 @if(Auth::user()->codUserRol == 3)
                                 <a class="dropdown-item" href="{{ route('viewMessageEmployer') }}">
                                         {{ __('Mensajes') }}
-                                    </a>
+                                </a>
+                                <a class="dropdown-item" href="{{ route('supportEmployer.index') }}">
+                                        {{ __('Soporte') }}
+                                </a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('Perfil') }}
@@ -714,7 +727,7 @@ text-decoration: none;
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('cerrar sesion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

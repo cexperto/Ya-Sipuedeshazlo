@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     Servicios
-                    <a href="{{ route('services.create') }}" class="btn btn-sm btn-primary float-right" >Crear</a>
+                    <a href="{{ route('adminService.create') }}" class="btn-sm btn-primary float-right" >Crear</a>
                 </div>
 
                 <div class="card-body">
@@ -27,11 +27,9 @@
                             @foreach($services as $service)
                                 <tr>
                                     <td>{{ $service->id }}</td>
-                                    <td>{{ $service->name }}</td>
+                                    <td>{{ $service->Nombre }}</td>                                    
                                     <td>
-                                        <a href="{{ route('adminService.edit', $service) }}" class="btn-primary btn-sm">
-                                            Editar
-                                        </a>
+                                        <a href="{{ route('adminService.edit', $service->id) }}">Editar</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('adminService.destroy', $service) }}" method="service">

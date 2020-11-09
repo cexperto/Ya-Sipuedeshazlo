@@ -7,7 +7,7 @@
             <h2>Regístrate</h2>
             
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" onsubmit="return checkCheckBox(this)">
                 @csrf
                 <input id="name" class="input__register @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre" required autocomplete="name" autofocus>
                 <input id="lastName" class="input__register @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" placeholder="Apellido" required autocomplete="lastName" autofocus>
@@ -35,11 +35,56 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                
                 <input id="password-confirm" type="password" class="input__register" name="password_confirmation" placeholder="Confirmar contraseña" required autocomplete="new-password">
-                <center><button type="submit" class="button">Registrarme</button></center>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="agree" name="agree">
+                    <label class="form-check-label" for="check">Aceptar
+                    <a href="terminos">Terminos y condiciones</a>
+                    </label>                    
+                </div>
+                <center><button type="submit" id="btn" class="button">Registrarme</button></center>
             </form>
             <p class="register__container--register"><a href="{{ route('login') }}">Iniciar sesion</a></p>
-            
+            <script>
+            function _keyValidation() {
+                    var text = document.getElementById("name");
+                    var text2 = document.getElementById("lastName");
+                    text.addEventListener("keypress", _check);
+                    text2.addEventListener("keypress", _check);
+                    function _check(e) {
+                    var textV = "which" in e ? e.which : e.keyCode,
+                        char = String.fromCharCode(textV),
+                        regex = /[a-z ]/ig;
+                        if(!regex.test(char)) e.preventDefault(); return false;
+                    }
+                }
+
+                window.addEventListener("load", _keyValidation);
+                $( '#check' ).on( 'click', function() {
+                    if( $(this).is(':checked') ){
+                        document.getElementById("label-costo").style.display = "block";                        
+                        document.getElementById("cost").style.display = "none";                        
+                        document.getElementById("cost").value = "3750";                        
+                        //alert("no e cuanto cobrar");
+                    } else {
+                        // Hacer algo si el checkbox ha sido deseleccionado
+                        document.getElementById("label-costo").style.display = "none";
+                        document.getElementById("la-cost").style.display = "block";                        
+                        document.getElementById("cost").style.display = "block";
+                        document.getElementById("cost").value = "";
+                    }
+                });
+
+                function checkCheckBox(f){
+                    if (f.agree.checked == false ){
+                        alert('Por favor Aceptar antes de Continuar.');
+                        return false;
+                    }else{
+                        return true;
+                    }
+                    }
+            </script>
         </section>
     </section>
 @endsection

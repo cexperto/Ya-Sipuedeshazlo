@@ -3,133 +3,38 @@
 @section('content')
 <style>
 
-form{ 
-    width:100%; 
-    margin:0 auto; 
-    padding:10px; 
-    border: 1px solid #d9d9d9;
-    }
-form p{
-    text-align:center; 
-    font-size:30px;
-    }
-
-
-input[type = "radio"]{ 
-    display:none;/*position: absolute;top: -1000em;*/
-    }
-.s{ 
-    color:grey;
-    }
-
-.clasificacion{
-    direction: rtl;
-    unicode-bidi: bidi-override;
-}
-
-.s:hover,
-.s:hover ~ .s{
-    color:orange;
-    }
-input[type = "radio"]:checked ~ .s{
-    color:orange;
-    }
 
 </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <div class="card-header"><center>{{ __('Servicios Terminados') }}</div>
+        <div class="card-header"><center>{{ __('Servicios terminados') }}</div>
         <div class="card-body">
+                Aca encontrara los servicios terminados 
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif           
 
         @if(Auth::User()->id)
             @foreach($services as $service)
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                            <div class="form-group row">
-                                <div class="col-sm-6"><!-- primera columna -->                                    
-                                    <img src="{{ $service->imageServices }}" class="card-img-top" width="100%" height="300">
-                                    <div class="form-group">
-                                            <div id="wrapper">
-                                            @if (session('status'))
-                                                <div class="alert alert-success" role="alert">
-                                                    {{ session('status') }}
-                                                </div>
-                                            @endif
-                                                <form action="{{ route('userValoration.store') }}" method="post">
-                                                    {{ __('Por favor califica al empleador') }}
-                                                        <p class="clasificacion">
-                                                            <input id="radio1" type="radio" name="estrellas" value="5">
-                                                            <label class="s" for="radio1">&#9733;</label>
-                                                            <input id="radio2" type="radio" name="estrellas" value="4">
-                                                            <label class="s" for="radio2">&#9733;</label>
-                                                            <input id="radio3" type="radio" name="estrellas" value="3">
-                                                            <label class="s" for="radio3">&#9733;</label>
-                                                            <input id="radio4" type="radio" name="estrellas" value="2">
-                                                            <label class="s" for="radio4">&#9733;</label>
-                                                            <input id="radio5" type="radio" name="estrellas" value="1">
-                                                            <label class="s" for="radio5">&#9733;</label>
-                                                        </p>
-                                                        <input type="hidden" name="id" id="id" value="{{ $service->employerId }}">
-                                                        <center>Añade un comentario
-                                                        <textarea name="comment" id="comment" class="form-control"></textarea><br>
-                                                        <input type="submit" value="valorar" name="" class="btn-primary btn-sm">
-                                                        </center>
-
-                                                        @csrf
-                                                        @METHOD('POST')
-                                                </form>
-                                            </div>
-                                        <div>
-
-                                        </div>
-
-                                    </div>
-                                    
-                                </div><!-- fin promera columna -->
-                        
-                                <div class="col-sm-6"><!-- segunda columna -->
-                                <div class="form-group">
-                                        <label class="col-md-5 control-label">id</label>
-                                        {{ $service->idServices }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">{{ $service->names }}</label>                                        
-                                    </div>
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">Descripcion</label><br>
-                                            {{ $service->description }}
-                                            
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">Costo</label>
-                                            {{ $service->cost }} 
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">Estado:</label>
-                                            {{ $service->state }}
-                                        </div>
-                                        <div class="card-header"><center></div>
-
-                                        <div class="form-group">
-                                        <label class="col-md-5 control-label">{{ $service->name }}</label>
-                                        {{ $service->lastName }} 
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Numero de telefono</label>
-                                        {{ $service-> documentNumber}}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Correo electronico</label>
-                                        {{ $service->email }}
-                                    </div>                                     
-                                        
-                                </div><!-- fin 2 da -->
-                            </div>
-                    </div>
+            <div class="card">
+                <div class="card-header">                    
                 </div>
-                <hr>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $service->names }}</h5>
+                    <p class="card-text">{{ $service->description }}</p>
+                    <form action="{{ route('completeDetaill')}}" method="POST">
+                        <input type="hidden" id="id" name="id" value="{{ $service->id }}">
+                        <input type="hidden" id="employerId" name="employerId" value="{{ $service->employerId  }}">
+                        <input type="submit" value="Ver detalles" class="btn-sm btn-primary float-right">
+                        @csrf
+                        @method('POST')
+                    </form>
+                </div>
+            </div>
+                
             @endforeach
         @endif
         </div>

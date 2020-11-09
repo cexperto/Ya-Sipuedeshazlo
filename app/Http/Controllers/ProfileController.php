@@ -10,9 +10,7 @@ use DB;
 
 class ProfileController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+   
     /**
      * Display a listing of the resource.
      *
@@ -83,23 +81,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function userUpdate(ProfileRequest $request)
-    {
-        //return $request->file('file');
-        $userUpdate =[
-            'address'     => $request->input('address'),
-            'phoneNumber' => $request->input('phoneNumber'),
-        ];
-        if($request->file('file')){
-            Storage::disk('public')->delete($request->image);
-            $request->image = $request->file('file')->store('users', 'public');
-        }
-        //return dd($userUpdate);
-        $idU = auth()->user()->id;
-        DB::table('users')->where('id','=',$idU)->update($userUpdate);
-        return back()->with('status', 'Actualizado con exito');
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *

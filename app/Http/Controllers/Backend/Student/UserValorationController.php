@@ -20,22 +20,18 @@ class UserValorationController extends Controller
         $codeUserValoration=$request->input('id');
         //return $request;muy buena persona doña nelcy
         $userId = auth()->user()->id;
-        $valoration = Valoration::where('evaluator','=',$userId)->get();
-        $count=count($valoration);
-        //return $count;        
-    
-        if($count!=0){          
-            return back()->with('status', 'Ya valoraste este usuario');
-        }else{
-            $valoration = Valoration::create([
-                'valoration'            =>$v,
-                'comments'              =>$comments,
-                'evaluator'             =>$userId,
-                'codeUserValoration'    =>$codeUserValoration,
                 
-            ]);
-        return back()->with('status', 'Gracias por valorar el empleador');
-        } 
+        //return $count;        
+        $valoration = Valoration::create([
+            'valoration'            =>$v,
+            'comments'              =>$comments,
+            'evaluator'             =>$userId,
+            'codeUserValoration'    =>$codeUserValoration,
+            
+        ]);
+    return redirect('completeStudent')->with('status', 'Valoracion exitosa');
+    
+
 
         
     }

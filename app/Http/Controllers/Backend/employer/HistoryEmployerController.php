@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend\employer;
+use App\User;
 use App\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,35 +14,21 @@ class HistoryEmployerController extends Controller
     }
     public function history(){
         $idUser = auth()->user()->id;
-        $sql = "SELECT users.id,users.name,
-        users.lastName,users.phoneNumber,
-        users.address,users.image as imageUsers ,
-        users.documentNumber,users.state,
-        users.phoneNumber,
-        users.email, 
-        services.id as idServices,services.names,
-        services.description,
-        services.cost,
-        services.image as imageServices,services.state,
-        services.longbox,services.latbox,
-        services.employerId,services.codUserServices
         
-        FROM users INNER JOIN services
-        WHERE users.id=services.codUserServices AND services.employerId=$idUser
-           ";
+        $sql = "SELECT * FROM services WHERE employerId=$idUser
+        AND state='Empleador' OR state='Estudiante' 
+        OR state='Terminado' ";        
         $services = DB::select($sql);
-        /* if($services->isEmpty()){
-            //return 'vasio';
-            return view('employer.create');
-        }else{
-            //return 'no vasio';
-        } */ 
-        //return $services;
-                    //return view('employer.history')->with('vasio',$services);
-
-            return view('employer.history', compact('services'));
-
         
+        return view('employer.history', compact('services'));
+    }
+    public function historyDetaill(Request $request){
+        $serviceId = $request->input('serviceId');
+        $studentId = $request->input('studentId');
+        $students = User::where('id','=',$studentId)->get();
+        $services = Service::where('id','=',$serviceId)->get();
+        //$offers = Service::where('id','=',$serviceId)->get();
+        return view('employer.historyDetaill', compact('students','services'));
     }
 }
 /* 

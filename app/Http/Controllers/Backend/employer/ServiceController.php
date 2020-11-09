@@ -16,6 +16,7 @@ class ServiceController extends Controller
     }
     public function findServices(ServiceEmployerRequest $request){
         /*  */
+        //return $request;
         $number= $request->input('distance');
         $name = $request->input('name');
         $lat = $request->input('latbox');
@@ -52,19 +53,25 @@ class ServiceController extends Controller
         /*  */
         
         $box = getBoundaries($lat, $lng, $distance);
-        $sql = "SELECT *,
+        if($name=='todos'){
+            $sql = "SELECT *,
                 (6371 * acos(cos(radians($lat)) * cos(radians(latbox)) * cos(radians(longbox)
                 - radians($lng)) + sin(radians($lat)) * sin(radians(latbox))))
                 AS distance
-                FROM services WHERE state='Disponible' and names='$name' ORDER BY distance DESC";
+                FROM services WHERE state='Disponible' ORDER BY distance DESC";
         
-        //$services = User::latest()->get();
         $services = DB::select($sql);
-        //$services =['id'=>$coleccion];
         return view('employer.index', compact('services'));
-        /* return view('employer.index',$services=[
-            'name'=>$services
-        ]); */
+        }else{
+            $sql = "SELECT *,
+                    (6371 * acos(cos(radians($lat)) * cos(radians(latbox)) * cos(radians(longbox)
+                    - radians($lng)) + sin(radians($lat)) * sin(radians(latbox))))
+                    AS distance
+                    FROM services WHERE state='Disponible' and names='$name' ORDER BY distance DESC";
+            $services = DB::select($sql);  
+            return view('employer.index', compact('services'));
+        }
+        
         
 
 

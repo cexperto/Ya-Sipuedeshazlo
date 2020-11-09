@@ -28,17 +28,13 @@
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->names }}</td>
                                     <td>
-                                    <form action="{{route('detailService', $post)}}">
-                                    <input type="hidden" name="id" id="id" value="{{ $post->id }}">
-                                    
-                                    <input 
-                                            type="submit" 
-                                            value="ver detalles" 
-                                            class="btn-sm">
-                                            @csrf
-                                    </form>
-                                            
-                                        
+                                        <form action="{{route('detaillService', $post)}}">
+                                            <input type="hidden" name="id" id="id" value="{{ $post->id }}">
+                                            <input type="hidden" name="employerId" id="employerId" value="{{ $post->employerId }}">
+                                            <input type="hidden" name="codUserServices" id="codUserServices" value="{{ $post->codUserServices  }}">
+                                            <input type="submit" value="ver detalles" class="btn-sm">
+                                                @csrf
+                                        </form>
                                     </td>
                                     <td>
                                         <a href="{{ route('posts.edit', $post) }}" class="btn-primary btn-sm">
@@ -47,7 +43,7 @@
                                     </td>
                                     <td>
                                         <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                                        <input type="hiden" id="id" name="id" value="{{ $post->id }}">
+                                        <input type="hidden" id="id" name="id" value="{{ $post->id }}">
                                             @csrf
                                             @method('DELETE')
                                             <input 

@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Articulos
-                    <a href="{{ route('Eservices.create') }}" class="btn btn-sm btn-primary float-right" >Crear</a>
+                    crear tickets
+                    <a href="{{ route('supportEmployer.create') }}" class="btn-sm btn-primary float-right" >Crear</a>
                 </div>
 
                 <div class="card-body">
@@ -20,31 +20,28 @@
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Titulo</th>
+                            <th>mensaje</th>                            
                             <th colspan="2">&nbsp;</th>
                         </thead>
                         <tbody>
-                            @foreach($services as $service)
+                            @foreach($contacts as $contact)
                                 <tr>
-                                    <td>{{ $service->id }}</td>
-                                    <td>{{ $service->name }}</td>
+                                    <td>{{ $contact->id }}</td>
+                                    <td>{{ $contact->message }}</td>                                    
                                     
                                     <td>
-                                        <a href="{{ route('posts.edit', $service) }}" class="btn btn-primary btn-sm">
-                                            Editar
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('posts.destroy', $service) }}" method="POST">
+                                        <form action="{{ route('supportEmployer.destroy', $contact) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $contact->id }}">
                                             <input 
                                             type="submit" 
                                             value="Eliminar" 
-                                            class="btn btn-sm btn-danger"
+                                            class="btn-sm btn-danger"
                                             onclick="return confirm('¿Desea eliminar?')">
                                         </form>
                                     </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

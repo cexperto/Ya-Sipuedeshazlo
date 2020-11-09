@@ -12,7 +12,9 @@ class SelectServiceController extends Controller
         $this->middleware('auth');
     }
     public function selectService(Request $request){
+        //return $request;
         $idService = $request->input('id');
+
         $sql = "SELECT services.id,services.state,
         type_of_services.id,
         type_of_services.name,type_of_services.quantity,

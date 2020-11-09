@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('adminService.update', $service) }}" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="title">id *</label>
                             <input type="text" name="id" id="id" class="form-control" value="{{ old('id', $service->id) }}">

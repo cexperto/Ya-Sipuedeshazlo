@@ -4,124 +4,71 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                   Historial                   
-                </div>
-
+            <div class="card">                
+            <div class="card-header"><center>{{ __('Historial') }} 
+            <a href="{{ route('offerHistory') }}" class="btn-sm btn-secondary float-right">Historial de ofertas</a>
+            </div>
                 <div class="card-body">
-                @if(Auth::User()->id)
-            @foreach($services as $service)
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                            <div class="form-group row">
-                            <div class="col-sm-6"><!-- primera columna -->
-                                <div class="form-group">
-                                       <strong>Datos del estudiante</strong>
-                                 </div>
-                                    @if($service->imageUsers)
-                                        <img src="{{ $service->image }}" class="card-img-top" width="100%" height="300">
-                                        @else
-                                            <img src="" class="card-img-top" width="100%" height="300">
-                                    @endif
-                                </div><!-- fin promera columna -->
-                        
-                                <div class="col-sm-6"><!-- segunda columna -->
-                                   
-                                    <div class="form-group"><br>
-                                        <label class="col-md-5 control-label">Id</label>
-                                        {{ $service->id }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Nombre</label>
-                                        {{ $service->name }} {{ $service->lastName }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Corre electronico</label>
-                                        {{ $service->email }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Numero de telefono</label>
-                                        {{ $service->phoneNumber }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-6 control-label">Numero de identificacion</label>
-                                        {{ $service->documentNumber }}
-                                    </div>
-                                    <div class="form-group"><br><br>
-                                           <strong> Datos del Servicio</strong>
-                                    </div>
-                                   
-                                </div><!-- fin 2 da -->
-                                
-                                <div class="col-sm-6"><!-- tercera columna -->                            
-                                    
-                                    <div class="form-group"><br>
-                                                <label class="col-md-5 control-label">Id</label>
-                                                {{ $service->idServices }}                            
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-8 control-label">Nombre del servicio</label><br>
-                                        {{ $service->names }} 
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Descripcion</label><br>
-                                        {{ $service->description }}
-                                    </div>   
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-                                </div><!-- fin  columna -->
-                                
-
-                                <div class="col-sm-6"><!-- cuarta columna -->
-                                <div class="form-group">
-                                        <label class="col-md-5 control-label"></label>
+                    <table class="table">
+                        <thead>
+                            <th>ID</th>
+                            <th>nombre</th>
+                            <th colspan="2">&nbsp;</th>
+                        </thead>
+                        <tbody>
+                            @foreach($services as $service)
+                                <tr>
+                                    <td>{{ $service->id }}</td>
+                                    <td>{{ $service->names }}</td>                                    
+                                    <td>
+                                    <form action="{{ route('historyEmployerDetaill') }}" method="service">
+                                    <input type="hidden" name="serviceId" id="serviceId" value="{{ $service->id }}">
+                                    <input type="hidden" name="studentId" id="studentId" value="{{ $service->codUserServices  }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input 
+                                            type="submit" 
+                                            value="Ver detalles" 
+                                            class="btn-sm btn-primary">
+                                        </form>
+                                    </td>
+                                    <td>
                                         
-                                    </div>
-                                   
-                                    <div class="form-group">
-                                        <label class="col-md-5 control-label">Costo aproximado</label>
-                                        {{ $service->cost }} 
-                                    </div>
-                                    
-                                    
-                                    @if($service->state=='Terminado')
-                                            <div class="form-group">
-                                            <label class="col-md-5 control-label">Estado:</label>
-                                            Terminado con exito
-                                            </div>
-                                        @endif
-                                        @if($service->state=='Empleador')
-                                            <div class="form-group">
-                                            Estado:<br>
-                                            Cancelado por empleador
-                                            </div>
-                                        @endif
-                                        @if($service->state=='Estudiante')
-                                            <div class="form-group">
-                                            <label class="col-md-5 control-label">Estado</label><br>
-                                                Cancelado por estudiante
-                                            </div>
-                                        @endif
-                                    <script>
-                                        /* $(document).ready(function(){
-                                            //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
-                                            setTimeout(refrescar, 2000);
-                                        });
-                                        function refrescar(){
-                                            //Actualiza la página
-                                            //alert("Hola mundo");
-                                            location.reload();
-                                        } */
-                                    </script>
-                                </div>
-                            </div>
-                    </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <hr>
-            @endforeach
-        @endif
-        </div>
+            </div>
         </div>
     </div>
 </div>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

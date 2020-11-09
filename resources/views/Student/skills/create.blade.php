@@ -38,8 +38,8 @@
 									<option value="Experto">Experto</option>									
 							</select>
                             <div class="form-group">
-                                <label for="expirience">Escribe algo sobre tu experiencia (Opcional)</label>
-                                <textarea name="expirience" id="expirience" rows="2" class="form-control"></textarea>
+                                <label for="expirience">Escribe algo sobre tu experiencia *</label>
+                                <textarea name="expirience" id="expirience" rows="2" class="form-control" required></textarea>
                             </div>                      
                             <div class="form-group">
                         

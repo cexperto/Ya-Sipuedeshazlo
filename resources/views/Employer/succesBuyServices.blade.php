@@ -12,9 +12,6 @@
                         <div class="alert alert-success" role="alert">
                            <a href="{{ route('acquired') }}">ver aca</a>
                         </div>
-                    
-
-                
                 </div>
             </div>
         </div>

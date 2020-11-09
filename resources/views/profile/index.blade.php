@@ -6,7 +6,11 @@
         <div class="col-md-10 mx-auto">
               <div class="form-group row">
               <div class="col-sm-6"><!-- primera columna -->
-        
+              @if(session('status'))
+                    <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
 
                 @foreach($users as $user)
                                   
