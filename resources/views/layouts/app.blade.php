@@ -524,25 +524,7 @@ background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
 background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
 text-decoration: none;
 }     
- /* footer */
 
-.footer{
-    display: flex;
-    align-items: center;
-    height: 100px;
-    width: 100%;
-    background-color: #e8f9e9;
-}
-.footer a{
-    color: black;
-    cursor: pointer;
-    font-size: 14px;
-    padding-left: 30px;
-    text-decoration: none;
-}
-.footer a:hover{
-    text-decoration: underline;
-}
 .notificationDanger{
     border-radius: 5px;
     background-color: red;
@@ -745,5 +727,62 @@ text-decoration: none;
             @yield('content')
         </main>
     </div>
+    <!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+        <!-- Content -->
+        <h5 class="text-uppercase">Ya, si puedes hazlo</h5>
+        Plataforma de empleabilidad.<br>
+        Desarrollado por .<br>
+        Andres Ayala- sipuedeshazloya@gmail.com<br>
+        Adriana Ramirez- arcp25@gmail.com
+      </div>
+      <!-- Grid column -->
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+        <!-- Links -->
+        <ul class="list-unstyled">
+          <li>
+              Contacto: sipudeshazloya@gmail.com
+          </li>          
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+        <!-- Links -->
+        <ul class="list-unstyled">
+          <li>
+            <a href="terminos">Terminos y condiciones </a>
+          </li>
+          <li>
+            <a href="contacto">Contacto </a>
+          </li>          
+        </ul>
+        <center>
+            <img src="{{ asset('img/logo_uniminuto.png') }}" alt="" style="width:300px">
+        </center>
+      </div>
+      <!-- Grid column -->
+    </div>    
+    <!-- Grid row -->
+  </div>
+  <!-- Footer Links -->
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright
+ 
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </body>
 </html>

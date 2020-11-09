@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="section">
-       <div class="section__container--item">
-            <div class="section__container--title">
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-lg-4">
+        <div class="section__container--title">
             Quienes somos
             </div>
             <div class="section__container--content">
@@ -15,8 +17,8 @@
             sus gastos.
             </div>
         </div>
-       <div class="section__container--item">
-            <div class="section__container--title">
+        <div class="col-lg-4">
+        <div class="section__container--title">
                 Mision
            </div>
            <div class="section__container--content">
@@ -26,21 +28,18 @@
            cursando algún pregrado y no han realizado ninguna labor 
            en alguna compañía que certifique y avale su experiencia laboral.
         </div>
-       </div>
-       <div class="section__container--item">
-            <div class="section__container--title">
+        </div>
+        <div class="col-lg-4">
+        <div class="section__container--title">
                 Vision
             </div>
             <div class="section__container--content">
-                ser la plataforma conocida a nivel nacional por ayudar a la población universitaria
-                 a lograr sus metas por medio de la explotación de sus habilidades.
+                Ser la plataforma conocida a nivel nacional por ayudar a jovenes universitarios
+                a generar ingresos conectadolos con el sector laboral aportando
+                 experiencia por medio de servicios prestados basados en habilidades.
             </div>
         </div>
+    </div>
 </div>
-<footer class="footer">
-    <a href="/">Términos de uso</a>
-    <a href="/">Declaración de privacidad</a>
-    <a href="/">Centro de ayuda</a>
-  </footer>  
 
 @endsection
