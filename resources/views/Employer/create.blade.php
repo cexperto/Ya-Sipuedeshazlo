@@ -160,13 +160,15 @@
                                         <option value="Auxiliar de Logística">Auxiliar de Logística</option>
                                         <option value="Auxiliar de Máquinas (Navegación)">Auxiliar de Máquinas (Navegación)</option>
                                         <option value="Auxiliar de Mostrador Casa de Cambios">Auxiliar de Mostrador Casa de Cambios</option>
+                                        <option value="Auxiliar de obra">Auxiliar de obra</option>
+                                        <option value="Auxiliar de Ornamentacion">Auxiliar de Mostrador Casa de Cambios</option>
                                         <option value="Auxiliar de Recursos Humanos">Auxiliar de Recursos Humanos</option>
                                         <option value="Auxiliar de Siniestros">Auxiliar de Siniestros</option>
                                         <option value="Auxiliar de Tesorería">Auxiliar de Tesorería</option>
                                         <option value="Ayudante de Cocina">Ayudante de Cocina</option>
                                         <option value="Ayudante de Nutrición">Ayudante de Nutrición</option>
                                         <option value="Ayudante de Psicología">Ayudante de Psicología</option>
-                                        <option value="Barbero *">Barbero *</option>
+                                        <option value="Barrendero *">Barrendero *</option>
                                         <option value="Bartender">Bartender</option>
                                         <option value="Bibliotecario">Bibliotecario</option>
                                         <option value="Biólogo">Biólogo</option>
@@ -387,6 +389,7 @@
                                         <option value="Matemático">Matemático</option>
                                         <option value="Mayordomo de Campo">Mayordomo de Campo</option>
                                         <option value="Médico">Médico</option>
+                                        <option value="Mesero">Mesero</option>
                                         <option value="Meteorólogo">Meteorólogo</option>
                                         <option value="Miembro de las Fuerzas Armadas">Miembro de las Fuerzas Armadas</option>
                                         <option value="Mozo">Mozo</option>
@@ -397,6 +400,7 @@
                                         <option value="Odontólogo">Odontólogo</option>
                                         <option value="Odontopediatra">Odontopediatra</option>
                                         <option value="Oficial/ Operador de Siniestros">Oficial/ Operador de Siniestros</option>
+                                        <option value="Operador">Operador</option>
                                         <option value="Operador de Activaciones">Operador de Activaciones</option>
                                         <option value="Operador de Call Center">Operador de Call Center</option>
                                         <option value="Operador de Garantías Post Venta">Operador de Garantías Post Venta</option>
@@ -413,6 +417,7 @@
                                         <option value="Operario de Industria Química *">Operario de Industria Química *</option>
                                         <option value="Operario de Industria Textil/ Confección *">Operario de Industria Textil/ Confección *</option>
                                         <option value="Operario de Limpieza *">Operario de Limpieza *</option>
+                                        <option value="Operario de Logistica *">Operario de Logistica *</option>
                                         <option value="Operario de Publicidad *">Operario de Publicidad *</option>
                                         <option value="Operario del Área Agropecuaria *">Operario del Área Agropecuaria *</option>
                                         <option value="Panadero *">Panadero *</option>

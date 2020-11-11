@@ -19,7 +19,7 @@
                             @if ($user->image)
                                 <img src="{{ $user->get_image }}" class="img-thumbnail">
                                 @else
-                                <img src="{{ asset('img/perfil.jpg') }}" class="img-thumbnail" alt="avatar">
+                                <img src="{{ asset('img/perfil.JPG') }}" class="img-thumbnail" alt="avatar">
                             @endif    
                                 <!-- <input type="file" class="form-control"> -->
                                 

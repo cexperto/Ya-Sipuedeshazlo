@@ -57,32 +57,32 @@ Route::group(['middleware' => 'admin'], function () {
     
 });
 Route::group(['middleware' => 'student'], function () {
-    Route::resource('services', 'Backend\student\ServiceController'); 
+    Route::resource('services', 'Backend\Student\ServiceController'); 
     //historial 
-    Route::get('/historyStudent','Backend\student\HistoryStudentController@history')->name('historyStudent');
-    Route::get('/historyDetaill','Backend\student\HistoryStudentController@historyDetaill')->name('historyDetaill'); 
+    Route::get('/historyStudent','Backend\Student\HistoryStudentController@history')->name('historyStudent');
+    Route::get('/historyDetaill','Backend\Student\HistoryStudentController@historyDetaill')->name('historyDetaill'); 
     //servicios en ejecucion estudiante
-    Route::get('runningServicesStudent','Backend\student\RunningServicesStudentController@runningServices')->name('runningServicesStudent');
-    Route::post('runningDetaill','Backend\student\RunningServicesStudentController@runningDetaill')->name('runningDetaill');
+    Route::get('runningServicesStudent','Backend\Student\RunningServicesStudentController@runningServices')->name('runningServicesStudent');
+    Route::post('runningDetaill','Backend\Student\RunningServicesStudentController@runningDetaill')->name('runningDetaill');
     
-    Route::get('completeStudent','Backend\student\CompleteStudentController@complete')->name('completeStudent');
-    Route::post('completeDetaill','Backend\student\CompleteStudentController@completeDetaill')->name('completeDetaill');
+    Route::get('completeStudent','Backend\Student\CompleteStudentController@complete')->name('completeStudent');
+    Route::post('completeDetaill','Backend\Student\CompleteStudentController@completeDetaill')->name('completeDetaill');
 
     //cancelar estudiantes
-    Route::post('cancelServiceStudent','Backend\student\CancelServicesStudentController@cancelServiceStudent')->name('cancelServiceStudent');
+    Route::post('cancelServiceStudent','Backend\Student\CancelServicesStudentController@cancelServiceStudent')->name('cancelServiceStudent');
     //vistas comentarios y valoracion 
-    Route::get('viewCommentsStudent','Backend\student\ViewCommentsStudentController@viewCommnets')->name('viewCommentsStudent');
+    Route::get('viewCommentsStudent','Backend\Student\ViewCommentsStudentController@viewCommnets')->name('viewCommentsStudent');
     //valoracion usuario
-    Route::resource('userValoration','Backend\student\UserValorationController');
+    Route::resource('userValoration','Backend\Student\UserValorationController');
     //finish
-    Route::post('finish','Backend\student\FinishServicesController@finish')->name('finish');     
-    Route::resource('skills','Backend\student\SkillsController');
-    Route::get('viewMessage','Backend\student\MessageController@viewMessage')->name('viewMessage');
-    Route::resource('supportStudent','Backend\student\SupportController');
-    Route::get('offerStudent','Backend\student\offerController@index')->name('offerStudent');
-    Route::post('applyOffer','Backend\student\offerController@apply')->name('applyOffer');
-    Route::get('myAply','Backend\student\offerController@myAply')->name('myAply');
-    Route::post('destroyApply','Backend\student\offerController@destroyApply')->name('destroyApply');
+    Route::post('finish','Backend\Student\FinishServicesController@finish')->name('finish');     
+    Route::resource('skills','Backend\Student\SkillsController');
+    Route::get('viewMessage','Backend\Student\MessageController@viewMessage')->name('viewMessage');
+    Route::resource('supportStudent','Backend\Student\SupportController');
+    Route::get('offerStudent','Backend\Student\OfferController@index')->name('offerStudent');
+    Route::post('applyOffer','Backend\Student\OfferController@apply')->name('applyOffer');
+    Route::get('myAply','Backend\Student\OfferController@myAply')->name('myAply');
+    Route::post('destroyApply','Backend\Student\OfferController@destroyApply')->name('destroyApply');
 });
 
 Route::group(['middleware' => 'employer'], function () {
@@ -150,4 +150,12 @@ MAIL_PASSWORD=ff45bb70d08e14
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=sipuedeshazloya@gmail.com
 MAIL_FROM_NAME="${APP_NAME}"
+
+721fd0de-af36-4b91-a271-f6a806e84468.clouding.host
+ */
+
+/*
+ssh root@185.254.204.43
+mNiuix4NFyAooNAb 
+mNiuix4NFyAooNAb
  */

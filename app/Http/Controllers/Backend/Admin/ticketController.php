@@ -9,6 +9,7 @@ class ticketController extends Controller
 {
     public function index(){
         $contacts = Contact::latest()->get();
+        //return $contacts;
         return view('admin.adminHome', compact('contacts'));
     }
 }

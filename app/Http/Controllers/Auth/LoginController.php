@@ -44,7 +44,7 @@ class LoginController extends Controller
         $documentNumber=$user->documentNumber;
          */
         if($user->codUserRol==1){            
-            return redirect()->route('adminHome');
+            return redirect()->route('ticket');
         }if($user->codUserRol==2 && $user->state=='Activo'){
             return redirect()->route('services.create');
         }if($user->codUserRol==3 && $user->state=='Activo'){

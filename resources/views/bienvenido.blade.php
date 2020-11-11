@@ -3,61 +3,50 @@
 @section('content')
 <section class="main">
         <h2 class="main_title">BIENVENIDO</h2>
-        <h3 class="main_subtitle">Encuentra empleos u oferta uno!</h3>
-    </section>
+        <h3 class="main_subtitle">Puedes publicar servicios o puedes oferta empleos</h3>
+</section>
     <!--  -->
-    <section class="carousel">
-     <div class="carousel__container">
-       <div class="carousel-item">
-       
-           <img class="carousel-item__img" src="https://i.imgur.com/xwvfz7E.jpg" alt="pc">
-            <div class="carousel-item__details">
-               <div class="carousel-item__details-img">
-             </div> 
-            <p class="carousel-item__details--title">Educacion</p>
-        </div>
-        </div>
-       <div class="carousel-item">
-           <img class="carousel-item__img"src="https://i.imgur.com/tkVTOhK.jpg"alt="">
-           <div class="carousel-item__details">
-               <div class="carousel-item__details-img">
-             </div> 
-            <p class="carousel-item__details--title">Tecnologia</p>
-        </div>
-        </div>
-        <div class="carousel-item">
-            <img class="carousel-item__img"src="https://i.imgur.com/c9u3BPD.jpg"alt="">
-            <div class="carousel-item__details">
-               <div class="carousel-item__details-img">
-             </div> 
-            <p class="carousel-item__details--title">Construccion</p>
-        </div>
-        </div>
-        <div class="carousel-item">
-            <img class="carousel-item__img"src="https://i.imgur.com/phHyUB4.jpg"alt="">
-            <div class="carousel-item__details">
-               <div class="carousel-item__details-img">
-             </div> 
-            <p class="carousel-item__details--title">Servicios<br> generales</p>
-        </div>
-        </div>
-        <div class="carousel-item">
-            <img class="carousel-item__img"src="https://i.imgur.com/CfFGSA2.jpg"alt="">
-            <div class="carousel-item__details">
-               <div class="carousel-item__details-img">
-             </div> 
-            <p class="carousel-item__details--title">Marketing</p>
-        </div>
-        </div>
-       
-     </div>
-    </section>
-<!-- <footer class="footer">
-    <a href="/">Términos de uso</a>
-    <a href="/">Declaración de privacidad</a>
-    <a href="/">Centro de ayuda</a>
-  </footer>  
- -->
+    <div class="slider-contentMy">
+        
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-marc-mueller-380769.JPG') }}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Publica ofertas laborales</h5>
+        <p>Encuentra estudiantes para diferentes oficios </p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-burst-374079.JPG') }}" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Publica diferentes servicios</h5>
+        <p>Puedes publicar diferentes servicios, darte a conocer</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-fauxels-3184666.JPG') }}" alt="Third slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Trabaja en tus tiempos libres</h5>
+        <p>Una muy buena opcion para continuar con tus estudios</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    
 @endsection
 
     </html>

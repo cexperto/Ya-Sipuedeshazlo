@@ -587,7 +587,7 @@ text-decoration: none;
                         @else
                         @if(Auth::user()->codUserRol == 1)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('adminHome') }}">
+                                <a id="navbarDropdown" class="nav-link dropdown" href="{{ route('ticket') }}">
                                 {{ __('Inicio') }}
                                 </a>
                             </li>                            
