@@ -739,8 +739,8 @@ text-decoration: none;
         <h5 class="text-uppercase">Ya, si puedes hazlo</h5>
         Plataforma de empleabilidad.<br>
         Desarrollado por .<br>
-        Andres Ayala- sipuedeshazloya@gmail.com<br>
-        Adriana Ramirez- arcp25@gmail.com
+        Andres Ayala<br>
+        Adriana Ramirez 
       </div>
       <!-- Grid column -->
       <hr class="clearfix w-100 d-md-none pb-3">

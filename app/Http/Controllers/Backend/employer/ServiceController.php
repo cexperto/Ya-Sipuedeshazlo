@@ -61,7 +61,7 @@ class ServiceController extends Controller
                 FROM services WHERE state='Disponible' ORDER BY distance DESC";
         
         $services = DB::select($sql);
-        return view('employer.index', compact('services'));
+        return view('Employer.index', compact('services'));
         }else{
             $sql = "SELECT *,
                     (6371 * acos(cos(radians($lat)) * cos(radians(latbox)) * cos(radians(longbox)
@@ -69,7 +69,7 @@ class ServiceController extends Controller
                     AS distance
                     FROM services WHERE state='Disponible' and names='$name' ORDER BY distance DESC";
             $services = DB::select($sql);  
-            return view('employer.index', compact('services'));
+            return view('Employer.index', compact('services'));
         }
         
         

@@ -34,7 +34,7 @@ class CreateMessageController extends Controller
       ";
        $messages = DB::select($sql);
        // return $messages;
-        return view('employer.messages',compact('messages'));
+        return view('Employer.messages',compact('messages'));
     }
     
 }

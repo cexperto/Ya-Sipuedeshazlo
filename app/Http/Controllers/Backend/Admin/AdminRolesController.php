@@ -69,7 +69,7 @@ class AdminRolesController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('Admin/roles.edit',compact('role'));        
+        return view('Admin/Roles.edit',compact('role'));        
     }
 
     /**

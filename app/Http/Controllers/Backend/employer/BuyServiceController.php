@@ -20,7 +20,7 @@ class BuyServiceController extends Controller
                 'state'      => 'Adquirido'
             ]);
             //$service->save();
-            return view('employer.succesBuyServices');
+            return view('Employer.succesBuyServices');
     }
     
 }

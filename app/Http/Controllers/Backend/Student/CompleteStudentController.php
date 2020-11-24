@@ -17,7 +17,7 @@ class completeStudentController extends Controller
         //return $idUser;        
         $services = Service::where('codUserServices','=',$idUser)
                             ->where('state','=','Terminado')->get();
-        return view('student.complete', compact('services'));        
+        return view('Student.complete', compact('services'));        
         
     }
     public function completeDetaill(Request $request){
@@ -29,7 +29,7 @@ class completeStudentController extends Controller
         //$valorations = Valoration::where('codeUserValoration','=',$employerId)->get();
         //return $valorations;
         //$count = count($valorations);
-        return view('student.completeDetaillForm', compact('users','services'));        
+        return view('Student.completeDetaillForm', compact('users','services'));        
         /* if($count==0){
            // return $count;
             

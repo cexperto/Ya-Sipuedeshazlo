@@ -20,7 +20,7 @@ class HistoryEmployerController extends Controller
         $services = DB::select($sql);
         //return $services;
         
-        return view('employer.history', compact('services'));
+        return view('Employer.history', compact('services'));
     }
     public function historyDetaill(Request $request){
         $serviceId = $request->input('serviceId');
@@ -28,7 +28,7 @@ class HistoryEmployerController extends Controller
         $students = User::where('id','=',$studentId)->get();
         $services = Service::where('id','=',$serviceId)->get();
         //$offers = Service::where('id','=',$serviceId)->get();
-        return view('employer.historyDetaill', compact('students','services'));
+        return view('Employer.historyDetaill', compact('students','services'));
     }
 }
 /* 

@@ -21,7 +21,7 @@ class CompleteServicesController extends Controller
         //$services = DB::select($sql);        
         //return $services;
 
-        return view('employer.complete', compact('services'));        
+        return view('Employer.complete', compact('services'));        
     }
     public function detaillComplete(Request $request){
         $id = auth()->user()->id;
@@ -35,11 +35,11 @@ class CompleteServicesController extends Controller
         $results= count($valorations);
         //return $results;
         if($results==0){
-            return view('employer.detaillCompleteForm', compact('students','services','valorations'));
+            return view('Employer.detaillCompleteForm', compact('students','services','valorations'));
         }
         else{            
             //return $valorations;
-            return view('employer.detaillComplete', compact('students','services','valorations'));
+            return view('Employer.detaillComplete', compact('students','services','valorations'));
         }
         //return $valorations;
     }

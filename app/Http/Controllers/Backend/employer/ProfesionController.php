@@ -19,7 +19,7 @@ class ProfesionController extends Controller
     public function index()
     {
         $posts = Service::latest()->get();
-        return view('employer.index',compact('posts'));
+        return view('Employer.index',compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ProfesionController extends Controller
      */
     public function create()
     {
-        return view('employer.create');
+        return view('Employer.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class ProfesionController extends Controller
      */
     public function edit(Service $post)
     {
-        return view('employer.edit', compact('post'));
+        return view('Employer.edit', compact('post'));
     }
 
     /**

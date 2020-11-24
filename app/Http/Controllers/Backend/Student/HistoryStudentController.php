@@ -19,14 +19,14 @@ class HistoryStudentController extends Controller
         ";
         $services = DB::select($sql);
         //return $services;
-        return view('student.history',compact('services'));
+        return view('Student.history',compact('services'));
     }
     public function historyDetaill(Request $request){
         $serviceId = $request->input('serviceId');
         $employerId = $request->input('employerId');
         $employers = User::where('id','=',$employerId)->get();
         $services = Service::where('id','=',$serviceId)->get();
-        return view('student.historyDetaill', compact('employers','services'));
+        return view('Student.historyDetaill', compact('employers','services'));
         //return $request;
     }
 }

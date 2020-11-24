@@ -19,6 +19,6 @@ class ViewCommentsStudentController extends Controller
         $valorations = DB::select($sql);
         
         //return $valoration;
-        return view('student.viewComment', compact('valorations'));
+        return view('Student.viewComment', compact('valorations'));
     }
 }

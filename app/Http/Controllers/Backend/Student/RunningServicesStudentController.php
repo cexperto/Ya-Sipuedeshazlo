@@ -45,7 +45,7 @@ class RunningServicesStudentController extends Controller
             return redirect('services')->with('status','Ningun empleador a adquirido tus servicios');
         }else{
             //return 'no vasio';
-        return view('student.running',compact('services'));
+        return view('Student.running',compact('services'));
         }
     }
     public function runningDetaill(Request $request){

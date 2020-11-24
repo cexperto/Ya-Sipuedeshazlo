@@ -20,7 +20,7 @@ class acquiredServiceController extends Controller
                     ->where('state','=','Adquirido')->get();
                
         
-        return view('employer.buyServices', compact('services'));
+        return view('Employer.buyServices', compact('services'));
         
     }
     public function acquiredDetaill(Request $request){
@@ -30,6 +30,6 @@ class acquiredServiceController extends Controller
         $services = Service::where('id','=',$serviceId)->get();
         $types = TypeOfService::where('codServicesType','=',$serviceId)->get();
 
-        return view('employer.BuyDetaill', compact('users','services','types'));
+        return view('Employer.BuyDetaill', compact('users','services','types'));
     }
 }

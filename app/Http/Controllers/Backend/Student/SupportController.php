@@ -19,7 +19,7 @@ class SupportController extends Controller
         $contacts = Contact::where('sender','=',$id)
                             ->where('subject','=','ticket')
                             ->where('codUserContact','=',1)->latest()->get();
-        return view('student/support.index', compact('contacts'));
+        return view('Student/support.index', compact('contacts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class SupportController extends Controller
      */
     public function create()
     {
-        return view('student/support.create');        
+        return view('Student/support.create');        
     }
 
     /**

@@ -26,6 +26,6 @@ class SelectServiceController extends Controller
         $types = DB::select($sql);
         //return $types;
         $services = Service::where('id','=',$idService)->get();
-        return view('employer.edit',compact('services','types'));
+        return view('Employer.edit',compact('services','types'));
     }
 }

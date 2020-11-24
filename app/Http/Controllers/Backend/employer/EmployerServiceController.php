@@ -18,7 +18,7 @@ class EmployerServiceController extends Controller
     public function index()
     {
         $services = Service::latest()->get();
-        return view('employer.index',compact('services'));
+        return view('Employer.index',compact('services'));
 
     }
 
@@ -29,7 +29,7 @@ class EmployerServiceController extends Controller
      */
     public function create()
     {
-        return view('employer.create');
+        return view('Employer.create');
     }
 
     /**

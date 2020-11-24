@@ -16,11 +16,11 @@ class OfferController extends Controller
         $userId = auth()->user()->id;
         $services = Service::where('codUserServices','=',$userId)
                              ->where('state','=','OfertaDisponible')->get();
-        return view('employer/offer.index',compact('services'));
+        return view('Employer/offer.index',compact('services'));
         //return view('employer/offer.create');
     }
     public function create(){
-        return view('employer/offer.create');
+        return view('Employer/offer.create');
     }
     public function store(OfferRequest $request){
         //return $request;
@@ -80,7 +80,7 @@ class OfferController extends Controller
         $serviceId = $request->input('id');
         $services = Service::where('id','=',$serviceId)->get();
 
-        return view('employer/offer.edit', compact('services'));
+        return view('Employer/offer.edit', compact('services'));
 
     }
     public function update(Request $request){
@@ -116,7 +116,7 @@ class OfferController extends Controller
         
         //$users = DB::select($sql);
         //return $users;        
-        return view('employer/offer.application', compact('users'));
+        return view('Employer/offer.application', compact('users'));
     }    
     public function finishOffer(Request $request){
         //return $request;
@@ -135,7 +135,7 @@ class OfferController extends Controller
         $services = Service::where('codUserServices','=',$userId)
                         ->where('state','=','OfertaTerminada')->get();
 
-    return view('employer/offer.history', compact('services'));
+    return view('Employer/offer.history', compact('services'));
         
     }
 }

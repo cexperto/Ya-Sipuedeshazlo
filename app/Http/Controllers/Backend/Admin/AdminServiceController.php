@@ -20,7 +20,7 @@ class adminServiceController extends Controller
     public function index()
     {
         $services = Service::latest()->get();
-        return view('admin/services.index',compact('services'));
+        return view('Admin/services.index',compact('services'));
     }
 
     /**

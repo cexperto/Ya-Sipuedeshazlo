@@ -19,7 +19,7 @@ class FinishServicesController extends Controller
             ->update([                
                 'state'      => 'Terminado'
             ]);
-            return view('student.finish');
+            return view('Student.finish');
 
     }
 }

@@ -19,6 +19,6 @@ class ViewCommentsEmployerController extends Controller
         $valorations = DB::select($sql);
         
         //return $valoration;
-        return view('employer.viewComment', compact('valorations'));
+        return view('Employer.viewComment', compact('valorations'));
     }
 }

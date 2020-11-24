@@ -69,7 +69,7 @@ class SkillsController extends Controller
     public function edit(Skill $skill)
     {
         //return $skill;
-        return view('student/skills.edit', compact('skill'));
+        return view('Student/skills.edit', compact('skill'));
     }
 
     /**

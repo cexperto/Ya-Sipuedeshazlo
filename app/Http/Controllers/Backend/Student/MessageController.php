@@ -21,6 +21,6 @@ class MessageController extends Controller
       ";
        $messages = DB::select($sql);
         //return $messages;
-        return view('student.messages',compact('messages'));
+        return view('Student.messages',compact('messages'));
     }
 }
