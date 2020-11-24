@@ -16,7 +16,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100 my" src="{{ asset('img/pexels-marc-mueller-380769.JPG') }}" alt="First slide">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-marc-mueller-380769.jpg') }}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
         <h5>Publica ofertas laborales</h5>
         <p>Encuentra estudiantes para diferentes oficios </p>
