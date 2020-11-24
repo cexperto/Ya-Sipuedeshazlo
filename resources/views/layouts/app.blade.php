@@ -749,7 +749,7 @@ text-decoration: none;
         <!-- Links -->
         <ul class="list-unstyled">
           <li>
-              Contacto: sipudeshazloya@gmail.com
+              Contacto: sipuedeshazloya@gmail.com
           </li>          
         </ul>
 

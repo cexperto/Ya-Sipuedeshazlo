@@ -16,9 +16,9 @@ class HistoryEmployerController extends Controller
         $idUser = auth()->user()->id;
         
         $sql = "SELECT * FROM services WHERE employerId=$idUser
-        AND state='Empleador' OR state='Estudiante' 
-        OR state='Terminado' ";        
+        ";        
         $services = DB::select($sql);
+        //return $services;
         
         return view('employer.history', compact('services'));
     }
@@ -32,5 +32,6 @@ class HistoryEmployerController extends Controller
     }
 }
 /* 
-
+AND state='Empleador' OR state='Estudiante' 
+        OR state='Terminado' 
  */

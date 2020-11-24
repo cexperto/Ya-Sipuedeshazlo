@@ -126,36 +126,3 @@ Route::group(['middleware' => 'employer'], function () {
 
 });
 
-//Tu contraseña de aplicación para el dispositivo
-//rtgpapqforfbrrog
-/* 
-Cómo utilizarla
-Accede a la sección de configuración de tu cuenta de Google
-en la aplicación o el dispositivo que estés intentando configurar. 
-Sustituye tu contraseña por la contraseña de 16 caracteres
- que se muestra arriba.
-
-Al igual que la contraseña normal, 
-esta contraseña de aplicación ofrece acceso completo a tu c
-uenta de Google. No tendrás que recordarla, 
-así que no la escribas ni la compartas con nadie.
- */
-/* 
-env
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=5b3b70680fae3c
-MAIL_PASSWORD=ff45bb70d08e14
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=sipuedeshazloya@gmail.com
-MAIL_FROM_NAME="${APP_NAME}"
-
-721fd0de-af36-4b91-a271-f6a806e84468.clouding.host
- */
-
-/*
-ssh root@185.254.204.43
-mNiuix4NFyAooNAb 
-mNiuix4NFyAooNAb
- */
