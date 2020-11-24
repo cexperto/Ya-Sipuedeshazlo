@@ -19,7 +19,7 @@ class AdminRolesController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin/roles.index',compact('roles'));
+        return view('Admin/Roles.index',compact('roles'));
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminRolesController extends Controller
      */
     public function create()
     {
-        return view('admin/roles.create');
+        return view('Admin/Roles.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class AdminRolesController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin/roles.edit',compact('role'));        
+        return view('Admin/roles.edit',compact('role'));        
     }
 
     /**

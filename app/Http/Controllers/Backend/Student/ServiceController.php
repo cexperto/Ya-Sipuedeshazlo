@@ -29,11 +29,11 @@ class ServiceController extends Controller
         //return $services;
         if(empty($services)){
             //return 'vasio';
-            return view('student.create');
+            return view('Student.create');
         }else{
             //return 'no vasio';
           //  return $services;
-        return view('student.index',compact('services'));
+        return view('Student.index',compact('services'));
 
         }
     }
@@ -44,7 +44,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        return view('Student.create');
     }
 
     /**
@@ -175,7 +175,7 @@ class ServiceController extends Controller
         //return $types;
         
         //return $service;
-        return view('student.edit', compact('service','types'));
+        return view('Student.edit', compact('service','types'));
     }
 
     /**

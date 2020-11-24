@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function index()
     {
         $services = Service::where('state','=','OfertaDisponible')->get();
-        return view('student/offer.index', compact('services'));
+        return view('Student/offer.index', compact('services'));
     }
     public function apply(Request $request){
         $codServices = $request->input('id');
@@ -44,7 +44,7 @@ class OfferController extends Controller
                     ->where('userId','=',$idUser)
                     ->get();
         //return $services;
-        return view('student/offer.edit',compact('services'));
+        return view('Student/offer.edit',compact('services'));
     }
     public function destroyApply(Request $request){
         $idUser = auth()->user()->id;        

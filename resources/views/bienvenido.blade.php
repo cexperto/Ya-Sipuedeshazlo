@@ -16,21 +16,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100 my" src="{{ asset('img/pexels-marc-mueller-380769.JPG') }}" alt="First slide">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-marc-mueller-380769.jpg') }}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
         <h5>Publica ofertas laborales</h5>
         <p>Encuentra estudiantes para diferentes oficios </p>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100 my" src="{{ asset('img/pexels-burst-374079.JPG') }}" alt="Second slide">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-burst-374079.jpg') }}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
         <h5>Publica diferentes servicios</h5>
         <p>Puedes publicar diferentes servicios, darte a conocer</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100 my" src="{{ asset('img/pexels-fauxels-3184666.JPG') }}" alt="Third slide">
+      <img class="d-block w-100 my" src="{{ asset('img/pexels-fauxels-3184666.jpg') }}" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
         <h5>Trabaja en tus tiempos libres</h5>
         <p>Una muy buena opcion para continuar con tus estudios</p>
